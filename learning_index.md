@@ -21,14 +21,14 @@ Map concepts back to the portfolio whenever useful.
 ## Current status
 
 ```text
-React + TypeScript coding track - Not started
-Next: Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+React + TypeScript coding track - Day 1 cleared
+Next: Day 2 - React mental model, components, JSX
 ```
 
 Detailed status:
 
 ```text
-Day 1 - Not started
+Day 1 - Cleared
 Day 2 - Not started
 Day 3 - Not started
 Day 4 - Not started
@@ -58,18 +58,19 @@ Day 27 - Not started
 Day 28 - Not started
 Day 29 - Not started
 Day 30 - Not started
-Next: Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+Next: Day 2 - React mental model, components, JSX
 ```
 
 ---
 
 ## Current Project Sources structure
 
-Current starting source structure:
+Current source structure after Day 1:
 
 ```text
 README.md
 learning_index.md
+day1_notes.md
 ```
 
 Optional existing context sources if already uploaded:
@@ -90,11 +91,50 @@ After each completed 7-day block, consolidate daily notes into weekX_notes.md.
 
 ---
 
+## Local VS Code app structure
+
+Current local app folder structure:
+
+```text
+React-TypeScript/
+  README.md
+  learning_index.md
+  package.json
+  index.html
+  vite.config.ts
+  src/
+    main.tsx
+    App.tsx
+    index.css
+    App.css
+    week1/
+      day01-setup/
+        Day01Setup.tsx
+        day1_notes.md
+        main-tsx-notes.md
+```
+
+Chosen structure rule:
+
+```text
+Use src/week1/dayXX-topic folders.
+Do not create separate Vite apps per day or week.
+App.tsx acts as the switchboard for the current day's component.
+```
+
+Current render flow:
+
+```text
+index.html -> main.tsx -> App.tsx -> src/week1/day01-setup/Day01Setup.tsx -> browser UI
+```
+
+---
+
 ## 30-day React + TypeScript plan
 
 | Day | Topic | Status | Notes file |
 |---|---|---|---|
-| Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Not started | - |
+| Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Cleared | day1_notes.md |
 | Day 2 | React mental model, components, JSX | Not started | - |
 | Day 3 | Props | Not started | - |
 | Day 4 | TypeScript props with `type` and `interface` | Not started | - |
@@ -134,13 +174,18 @@ After each completed 7-day block, consolidate daily notes into weekX_notes.md.
 Status:
 
 ```text
-Not started
+In progress - Day 1 cleared
 ```
 
-Expected coverage:
+Completed:
 
 ```text
-Day 1 - Setup, Vite, React app structure
+Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+```
+
+Remaining:
+
+```text
 Day 2 - React mental model, components, JSX
 Day 3 - Props
 Day 4 - TypeScript props
@@ -183,19 +228,6 @@ Day 13 - Fetch/API calls
 Day 14 - Loading, error, empty, and success states
 ```
 
-Main Week 2 foundation:
-
-```text
-reusable component design
-controlled input state
-form handling
-validation UX
-effects
-localStorage/document/window
-API calls
-request lifecycle states
-```
-
 ### Week 3 - App Architecture and Advanced State
 
 Status:
@@ -214,19 +246,6 @@ Day 18 - Context API
 Day 19 - useReducer
 Day 20 - Custom hooks
 Day 21 - React Query / TanStack Query basics
-```
-
-Main Week 3 foundation:
-
-```text
-typed API data
-client-side routing
-page structure
-shared layouts
-global state with context
-complex local state with reducer
-reusable logic with custom hooks
-server state with React Query
 ```
 
 ### Week 4 - Production-Level Frontend Skills
@@ -249,20 +268,6 @@ Day 27 - Mini project: projects grid/cards
 Day 28 - Mini project: theme system
 ```
 
-Main Week 4 foundation:
-
-```text
-component styling
-Tailwind mindset
-semantic HTML
-keyboard/focus behavior
-avoiding unnecessary re-renders
-memoization basics
-lazy loading
-React Testing Library
-portfolio-style features
-```
-
 ### Final Block - Portfolio Polish
 
 Status:
@@ -278,13 +283,52 @@ Day 29 - Portfolio refactor and polish
 Day 30 - Final review, interview explanations, next roadmap
 ```
 
-Main final block foundation:
+---
+
+## Day 1 completed summary
+
+Day 1 covered:
 
 ```text
-connect fundamentals back to portfolio
-clean up component architecture
-practice interview wording
-identify next learning path
+Vite setup
+npm install
+npm run dev
+generated files and folders
+package.json scripts
+index.html root div
+main.tsx entry point
+createRoot
+StrictMode
+App.tsx root component
+first visible UI edit
+first custom component
+App.tsx as switchboard
+```
+
+Important Day 1 flow:
+
+```text
+index.html -> main.tsx -> App.tsx -> Day01Setup.tsx -> browser UI
+```
+
+Important correction:
+
+```text
+document.getElementById('root') finds the root div.
+createRoot uses that div to create React's root.
+.render(<App />) tells React what component to display there.
+```
+
+Current Day 1 custom component:
+
+```text
+src/week1/day01-setup/Day01Setup.tsx
+```
+
+Current `App.tsx` role:
+
+```text
+App.tsx imports and renders Day01Setup.
 ```
 
 ---
@@ -292,54 +336,23 @@ identify next learning path
 ## Next day
 
 ```text
-Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+Day 2 - React mental model, components, JSX
 ```
 
-Expected Day 1 focus:
+Expected Day 2 focus:
 
 ```text
-what React app setup looks like
-why Vite is used
-what npm install does
-what npm run dev does
-what main.tsx does
-what App.tsx does
-how the browser shows React UI
-how to make the first visible edit
-small first component exercise
-final mini check
+React app as a component tree
+what a React component is
+function components
+JSX basics
+returning JSX
+one parent wrapper rule
+className vs class
+curly braces for JavaScript values
+creating and rendering small components
+mapping the idea to portfolio components like Hero, Projects, Contact, Navigation
 ```
-
----
-
-## Local app setup
-
-Create one app for the full React learning track:
-
-```bash
-npm create vite@latest react-30-days-lab -- --template react-ts
-cd react-30-days-lab
-npm install
-npm run dev
-```
-
-Recommended folder direction:
-
-```text
-src/
-  days/
-    day01-setup/
-    day02-components-jsx/
-    day03-props/
-    day04-typescript-props/
-    day05-state/
-    day06-events/
-    day07-conditionals-lists/
-  App.tsx
-  main.tsx
-```
-
-This will grow as days are completed.
 
 ---
 
@@ -416,6 +429,16 @@ Accessibility -> labels, buttons, links, aria-labels, focus states
 Performance -> lazy loading, image optimization, avoiding unnecessary re-renders
 ```
 
+Day 1 portfolio mapping:
+
+```text
+Portfolio main.tsx renders App.
+Portfolio App.tsx acts as the app shell.
+Portfolio Home.tsx composes sections like Navigation, Hero, Projects, Contact, and Footer.
+Learning app main.tsx renders App.
+Learning app App.tsx currently renders Day01Setup.
+```
+
 ---
 
 ## Learning workflow rules
@@ -424,7 +447,8 @@ Performance -> lazy loading, image optimization, avoiding unnecessary re-renders
 Teach one topic at a time.
 Combine tiny related topics when it improves flow.
 Do not over-combine big concepts.
-Give exercises as copy-paste comment blocks.
+Give exercises as copy-paste comment blocks only for actual code practice.
+For concept notes, use clean Markdown Q&A blocks.
 React exercises should result in visible UI or clear TypeScript/React behavior.
 Review submitted code before moving forward.
 Do not move to the next topic until the current one is cleared.
@@ -465,6 +489,15 @@ Weekly notes should summarize and organize; they should not paste all daily note
 | Accessibility afterthought | Use labels, semantic elements, and keyboard-friendly behavior early |
 | Pretty UI hiding weak logic | Make it work correctly before polishing |
 
+Day 1 specific wording corrections:
+
+| Less accurate | Better |
+|---|---|
+| `index.html calls main.tsx` | `index.html loads main.tsx` |
+| `createRoot finds the root div` | `document.getElementById('root') finds the root div; createRoot uses it` |
+| `App.tsx is mounted` | `main.tsx mounts <App /> into the root div` |
+| `dev script has dev/build/lint/preview` | `scripts has those entries; dev specifically runs vite` |
+
 ---
 
 ## Day-specific key reminders
@@ -473,10 +506,13 @@ Weekly notes should summarize and organize; they should not paste all daily note
 
 ```text
 Vite gives a fast local React dev setup.
-main.tsx starts the React app.
-App.tsx is the root app component.
 npm install installs dependencies.
 npm run dev starts the dev server.
+index.html gives React a root div.
+main.tsx starts the React app.
+createRoot creates React's root using the root div.
+App.tsx is the root app component.
+App.tsx can act as the switchboard for the current day.
 The browser updates from React component output.
 ```
 
@@ -537,189 +573,6 @@ Use map() to render arrays.
 Every mapped item needs a key.
 ```
 
-### Day 8
-
-```text
-Composition means building larger UI from smaller components.
-Reusable components should receive data through props.
-Keep components focused.
-Avoid one giant App.tsx.
-```
-
-### Day 9
-
-```text
-Controlled forms store input values in React state.
-value comes from state.
-onChange updates state.
-This makes validation, submit, reset, and loading behavior easier.
-```
-
-### Day 10
-
-```text
-Validation improves user experience before submit.
-Show clear field-level errors.
-Do not rely only on happy-path form submission.
-Runtime validation is still needed on the backend.
-```
-
-### Day 11
-
-```text
-useEffect runs after render.
-Use it to sync with systems outside React.
-Examples include browser APIs, listeners, timers, and API calls.
-```
-
-### Day 12
-
-```text
-localStorage stores browser-side values.
-document and window are outside React.
-Effects touching document/window usually need cleanup or careful dependencies.
-```
-
-### Day 13
-
-```text
-fetch sends HTTP requests.
-Use async/await carefully.
-POST requests usually need method, headers, and body.
-JSON data must be stringified for request bodies.
-```
-
-### Day 14
-
-```text
-Good API UI handles loading, error, empty, and success states.
-Do not only build the success path.
-```
-
-### Day 15
-
-```text
-Type API response data before rendering it.
-Do not assume API data shape blindly.
-Use types/interfaces for response objects.
-```
-
-### Day 16
-
-```text
-Routing decides which page/component renders for a URL.
-Client-side routing changes views without a full page refresh.
-```
-
-### Day 17
-
-```text
-Layouts keep shared UI consistent.
-Pages should compose sections/components.
-Shared UI should not be duplicated everywhere.
-```
-
-### Day 18
-
-```text
-Context helps avoid passing props through many layers.
-Use it for shared app-level values.
-Do not use context for every small local state.
-```
-
-### Day 19
-
-```text
-useReducer helps when state logic becomes more complex.
-It groups state transitions into named actions.
-```
-
-### Day 20
-
-```text
-Custom hooks extract reusable stateful logic.
-Hook names must start with use.
-Custom hooks are not components; they return values/functions, not JSX.
-```
-
-### Day 21
-
-```text
-React Query helps manage server state.
-It handles loading, error, caching, refetching, and stale data better than manual fetch in many cases.
-```
-
-### Day 22
-
-```text
-Styling should support readability and maintainability.
-Use consistent classes/components.
-Avoid styling that hides broken logic.
-```
-
-### Day 23
-
-```text
-Accessibility starts with semantic HTML.
-Use labels for inputs.
-Use buttons for actions.
-Use links for navigation.
-Icon-only buttons need labels.
-Keyboard users should be able to use the UI.
-```
-
-### Day 24
-
-```text
-Performance starts with avoiding unnecessary work.
-Do not memoize everything blindly.
-Use lazy loading for heavy routes/components when it actually helps.
-Optimize images.
-```
-
-### Day 25
-
-```text
-Testing should cover user behavior.
-React Testing Library focuses on what users see and do.
-Test important flows like forms, toggles, and routes.
-```
-
-### Day 26
-
-```text
-A strong contact form shows controlled inputs, validation, loading, error, success, and reset behavior.
-This maps directly to the portfolio.
-```
-
-### Day 27
-
-```text
-A project grid shows list rendering, reusable cards, props, nested lists, and keys.
-This maps directly to the portfolio Projects section.
-```
-
-### Day 28
-
-```text
-A theme system shows state, localStorage, document classes, context, and reusable UI.
-This maps directly to portfolio theme improvements.
-```
-
-### Day 29
-
-```text
-Refactoring should make code easier to read, change, and explain.
-Do not refactor just to look clever.
-```
-
-### Day 30
-
-```text
-Final review should connect all concepts to portfolio and interview answers.
-The goal is to explain what you built clearly without sounding fake.
-```
-
 ---
 
 ## Existing conceptual React knowledge
@@ -757,39 +610,23 @@ Need stronger muscle memory, not just conceptual understanding.
 ## Current confidence level
 
 ```text
-Ready to start Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+Ready to start Day 2 - React mental model, components, JSX
 ```
 
 ---
 
-## Prompt to start Day 1
+## Prompt to continue in a new chat
 
-Use this in a new chat:
+Use this:
 
 ```text
 Check the README and learning_index.md in this project.
 
 Continue my React + TypeScript learning from the project context.
 
-Start Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx.
+Start Day 2 - React mental model, components, JSX.
 
 Use Asabeneh's 30 Days Of React repo as the backbone, but modernize it for React + TypeScript + Vite.
-
-Teach me one topic at a time. Give examples and VS Code exercises. Review my code strictly but fairly before moving forward.
-```
-
----
-
-## Prompt to continue any future day
-
-Use this in a new chat:
-
-```text
-Check the README and learning_index.md in this project.
-
-Continue my React + TypeScript learning from the project context.
-
-Start the next day listed in learning_index.md using Asabeneh's 30 Days Of React repo as the backbone, but modernize it for React + TypeScript + Vite.
 
 Teach me one topic at a time. Give examples and VS Code exercises. Review my code strictly but fairly before moving forward.
 ```
