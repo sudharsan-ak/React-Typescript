@@ -5,6 +5,12 @@ This project is for learning React from the basics using Asabeneh's 30 Days Of R
 Source backbone:
 https://github.com/Asabeneh/30-Days-Of-React
 
+Portfolio GitHub for reference:
+https://github.com/sudharsan-ak/personal-portfolio/
+
+Actual Portfolio Live Site:
+https://sudharsansrinivasan.com/
+
 Main rule:
 Use the repo as the roadmap, not as a script to follow blindly.
 

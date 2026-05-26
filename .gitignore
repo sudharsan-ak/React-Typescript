@@ -15,6 +15,8 @@ dist-ssr
 .env.*
 !.env.example
 coverage
+react_portfolio_learning_checkpoint_FIXED.txt
+react-learning-index.md
 
 # Editor directories and files
 .vscode/*

@@ -5,6 +5,17 @@ Lightweight rolling tracker for the React + TypeScript learning project.
 Source backbone:
 https://github.com/Asabeneh/30-Days-Of-React
 
+Portfolio GitHub for reference:
+https://github.com/sudharsan-ak/personal-portfolio/
+
+Actual Portfolio Live Site:
+https://sudharsansrinivasan.com/
+
+Portfolio mapping rule:
+Use the GitHub repo to verify actual component/file/code structure.
+Use the live site to understand visible UI behavior.
+Do not guess exact portfolio implementation if it has not been verified.
+
 Learning approach:
 
 ```text
@@ -21,15 +32,15 @@ Map concepts back to the portfolio whenever useful.
 ## Current status
 
 ```text
-React + TypeScript coding track - Day 1 cleared
-Next: Day 2 - React mental model, components, JSX
+React + TypeScript coding track - Day 2 cleared
+Next: Day 3 - Props
 ```
 
 Detailed status:
 
 ```text
 Day 1 - Cleared
-Day 2 - Not started
+Day 2 - Cleared
 Day 3 - Not started
 Day 4 - Not started
 Day 5 - Not started
@@ -58,19 +69,20 @@ Day 27 - Not started
 Day 28 - Not started
 Day 29 - Not started
 Day 30 - Not started
-Next: Day 2 - React mental model, components, JSX
+Next: Day 3 - Props
 ```
 
 ---
 
 ## Current Project Sources structure
 
-Current source structure after Day 1:
+Current source structure after Day 2:
 
 ```text
 README.md
 learning_index.md
 day1_notes.md
+day2_notes.md
 ```
 
 Optional existing context sources if already uploaded:
@@ -112,6 +124,12 @@ React-TypeScript/
         Day01Setup.tsx
         day1_notes.md
         main-tsx-notes.md
+      day02-components-jsx/
+        Day02ComponentsJSX.tsx
+        DayBadge.tsx
+        JSXRulesPractice.tsx
+        CompositionPractice.tsx
+        Day02FinalPractice.tsx
 ```
 
 Chosen structure rule:
@@ -120,12 +138,40 @@ Chosen structure rule:
 Use src/week1/dayXX-topic folders.
 Do not create separate Vite apps per day or week.
 App.tsx acts as the switchboard for the current day's component.
+Group related practice into focused files when one daily file becomes bloated.
+Do not create one file per tiny exercise unless it improves clarity.
 ```
 
 Current render flow:
 
 ```text
-index.html -> main.tsx -> App.tsx -> src/week1/day01-setup/Day01Setup.tsx -> browser UI
+index.html -> main.tsx -> App.tsx -> src/week1/day02-components-jsx/Day02ComponentsJSX.tsx -> browser UI
+```
+
+Current Day 2 render tree:
+
+```text
+App
+  -> Day02ComponentsJSX
+      -> DayHeader
+      -> DaySummary
+      -> LearningStatus
+      -> PortfolioConnection
+      -> DayBadge
+      -> JSXBasics
+      -> WrapperRule
+      -> JSXRulesPractice
+           -> ClassNameRule
+           -> JavaScriptValuesRule
+           -> SelfClosingRule
+      -> CompositionPractice
+           -> CompositionIntro
+           -> ParentChildReminder
+      -> Day02FinalPractice
+           -> FinalHeader
+           -> ConceptSummary
+           -> JSXRuleList
+           -> SelfClosingReminder
 ```
 
 ---
@@ -135,7 +181,7 @@ index.html -> main.tsx -> App.tsx -> src/week1/day01-setup/Day01Setup.tsx -> bro
 | Day | Topic | Status | Notes file |
 |---|---|---|---|
 | Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Cleared | day1_notes.md |
-| Day 2 | React mental model, components, JSX | Not started | - |
+| Day 2 | React mental model, components, JSX | Cleared | day2_notes.md |
 | Day 3 | Props | Not started | - |
 | Day 4 | TypeScript props with `type` and `interface` | Not started | - |
 | Day 5 | State with `useState` | Not started | - |
@@ -174,19 +220,19 @@ index.html -> main.tsx -> App.tsx -> src/week1/day01-setup/Day01Setup.tsx -> bro
 Status:
 
 ```text
-In progress - Day 1 cleared
+In progress - Day 1 and Day 2 cleared
 ```
 
 Completed:
 
 ```text
 Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
+Day 2 - React mental model, components, JSX
 ```
 
 Remaining:
 
 ```text
-Day 2 - React mental model, components, JSX
 Day 3 - Props
 Day 4 - TypeScript props
 Day 5 - State with useState
@@ -325,10 +371,71 @@ Current Day 1 custom component:
 src/week1/day01-setup/Day01Setup.tsx
 ```
 
-Current `App.tsx` role:
+---
+
+## Day 2 completed summary
+
+Day 2 covered:
 
 ```text
-App.tsx imports and renders Day01Setup.
+React apps as component trees
+what a React component is
+function components
+JSX basics
+component naming
+default export and import
+one parent wrapper rule
+className instead of class
+curly braces for JavaScript values
+self-closing tags
+component composition
+portfolio mapping
+final mixed exercise
+```
+
+Important Day 2 flow:
+
+```text
+App -> Day02ComponentsJSX -> child components -> browser UI
+```
+
+Important Day 2 rule:
+
+```text
+Defining a component does not display it.
+Rendering the component displays it.
+```
+
+Current Day 2 folder:
+
+```text
+src/week1/day02-components-jsx/
+```
+
+Current Day 2 files:
+
+```text
+Day02ComponentsJSX.tsx
+DayBadge.tsx
+JSXRulesPractice.tsx
+CompositionPractice.tsx
+Day02FinalPractice.tsx
+```
+
+Important Day 2 final exercise:
+
+```text
+Day02FinalPractice
+  -> FinalHeader
+  -> ConceptSummary
+  -> JSXRuleList
+  -> SelfClosingReminder
+```
+
+Final mixed exercise status:
+
+```text
+Cleared
 ```
 
 ---
@@ -336,35 +443,40 @@ App.tsx imports and renders Day01Setup.
 ## Next day
 
 ```text
-Day 2 - React mental model, components, JSX
+Day 3 - Props
 ```
 
-Expected Day 2 focus:
+Expected Day 3 focus:
 
 ```text
-React app as a component tree
-what a React component is
-function components
-JSX basics
-returning JSX
-one parent wrapper rule
-className vs class
-curly braces for JavaScript values
-creating and rendering small components
-mapping the idea to portfolio components like Hero, Projects, Contact, Navigation
+what props are
+parent-to-child data flow
+passing string props
+passing number props
+passing boolean props
+receiving props in a child component
+props are read-only
+destructuring props
+using props with JSX
+mapping props to portfolio components
 ```
 
 ---
 
-## Global React rules to build from Day 1
+## Global React rules to build from Day 2
 
 ```text
 React builds UI as a component tree.
 Component names should start with capital letters.
 Components return JSX.
+Defining a component does not display it.
+Rendering a component displays it.
 JSX uses className, not class.
 JSX must return one parent wrapper.
 Use curly braces to insert JavaScript values into JSX.
+Tags without children should be self-closing.
+Use import/export to split components across files.
+Use composition to build bigger UI from smaller components.
 Props flow from parent to child.
 Props are read-only.
 State is data a component owns and can update.
@@ -388,7 +500,7 @@ Prefer readable code over clever code.
 
 ---
 
-## Global TypeScript rules to build from Day 1
+## Global TypeScript rules to build from Day 2
 
 ```text
 TypeScript adds static typing to JavaScript.
@@ -411,6 +523,8 @@ Do not over-type obvious values just to look fancy.
 ## Portfolio mappings to keep using
 
 ```text
+Verification rule -> Use GitHub repo for actual code structure and live site for visible behavior before making exact portfolio claims.
+
 Components -> Hero, Projects, Contact, Navigation, Footer
 JSX -> Tailwind className markup in portfolio components
 Props -> AI assistant receives isOpen, setIsOpen, theme
@@ -437,6 +551,17 @@ Portfolio App.tsx acts as the app shell.
 Portfolio Home.tsx composes sections like Navigation, Hero, Projects, Contact, and Footer.
 Learning app main.tsx renders App.
 Learning app App.tsx currently renders Day01Setup.
+```
+
+Day 2 portfolio mapping:
+
+```text
+Day02ComponentsJSX maps to Home page composition.
+Day 2 child components map to focused portfolio section components.
+JSX className maps to Tailwind className usage in the portfolio.
+Curly braces map to rendering variables, props, state, arrays, and API data.
+Self-closing component syntax maps to components like Navigation, Hero, Projects, Contact, and Footer.
+Import/export maps to how portfolio sections are split into files and imported into parent components.
 ```
 
 ---
@@ -498,6 +623,17 @@ Day 1 specific wording corrections:
 | `App.tsx is mounted` | `main.tsx mounts <App /> into the root div` |
 | `dev script has dev/build/lint/preview` | `scripts has those entries; dev specifically runs vite` |
 
+Day 2 specific corrections:
+
+| Issue | Correction |
+|---|---|
+| Missed exact punctuation | Match exercise output exactly when asked |
+| Missed required `h2` | Read each prompt line and include all requested tags |
+| Used inaccurate render comment after refactor | Keep comments aligned with actual component tree |
+| Wrote `Seld-closing` | Corrected to `Self-closing` |
+| External placeholder image did not load | Not a React issue; JSX syntax was correct |
+| Mixed semicolon style | Prefer no semicolons for consistency unless formatter adds them |
+
 ---
 
 ## Day-specific key reminders
@@ -521,10 +657,15 @@ The browser updates from React component output.
 ```text
 React apps are component trees.
 A component is a function that returns JSX.
+Defining a component does not show it.
+Rendering a component shows it.
 JSX looks like HTML but follows JavaScript/React rules.
 Use className instead of class.
 Use curly braces for JavaScript values.
 Return one parent wrapper.
+Use self-closing tags when there are no children.
+Use composition to build bigger UI from smaller child components.
+Use import/export to split components across files.
 ```
 
 ### Day 3
@@ -610,7 +751,7 @@ Need stronger muscle memory, not just conceptual understanding.
 ## Current confidence level
 
 ```text
-Ready to start Day 2 - React mental model, components, JSX
+Ready to start Day 3 - Props
 ```
 
 ---
@@ -624,7 +765,7 @@ Check the README and learning_index.md in this project.
 
 Continue my React + TypeScript learning from the project context.
 
-Start Day 2 - React mental model, components, JSX.
+Start Day 3 - Props.
 
 Use Asabeneh's 30 Days Of React repo as the backbone, but modernize it for React + TypeScript + Vite.
 
