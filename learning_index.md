@@ -12,9 +12,7 @@ Actual Portfolio Live Site:
 https://sudharsansrinivasan.com/
 
 Portfolio mapping rule:
-Use the GitHub repo to verify actual component/file/code structure.
-Use the live site to understand visible UI behavior.
-Do not guess exact portfolio implementation if it has not been verified.
+Use the GitHub repo to verify actual component/file/code structure. Use the live site to understand visible UI behavior. Do not guess exact portfolio implementation if it has not been verified.
 
 Learning approach:
 
@@ -32,8 +30,8 @@ Map concepts back to the portfolio whenever useful.
 ## Current status
 
 ```text
-React + TypeScript coding track - Day 2 cleared
-Next: Day 3 - Props
+React + TypeScript coding track - Day 3 cleared
+Next: Day 4 - TypeScript props with type and interface
 ```
 
 Detailed status:
@@ -41,7 +39,7 @@ Detailed status:
 ```text
 Day 1 - Cleared
 Day 2 - Cleared
-Day 3 - Not started
+Day 3 - Cleared
 Day 4 - Not started
 Day 5 - Not started
 Day 6 - Not started
@@ -69,20 +67,21 @@ Day 27 - Not started
 Day 28 - Not started
 Day 29 - Not started
 Day 30 - Not started
-Next: Day 3 - Props
+Next: Day 4 - TypeScript props with type and interface
 ```
 
 ---
 
 ## Current Project Sources structure
 
-Current source structure after Day 2:
+Current source structure after Day 3:
 
 ```text
 README.md
 learning_index.md
 day1_notes.md
 day2_notes.md
+day3_notes.md
 ```
 
 Optional existing context sources if already uploaded:
@@ -130,6 +129,11 @@ React-TypeScript/
         JSXRulesPractice.tsx
         CompositionPractice.tsx
         Day02FinalPractice.tsx
+      day03-props/
+        Day03Props.tsx
+        ReadOnlyPropsPractice.tsx
+        ReusablePropsPractice.tsx
+        Day03FinalPractice.tsx
 ```
 
 Chosen structure rule:
@@ -145,33 +149,25 @@ Do not create one file per tiny exercise unless it improves clarity.
 Current render flow:
 
 ```text
-index.html -> main.tsx -> App.tsx -> src/week1/day02-components-jsx/Day02ComponentsJSX.tsx -> browser UI
+index.html -> main.tsx -> App.tsx -> src/week1/day03-props/Day03Props.tsx -> browser UI
 ```
 
-Current Day 2 render tree:
+Current Day 3 render tree:
 
 ```text
 App
-  -> Day02ComponentsJSX
-      -> DayHeader
-      -> DaySummary
-      -> LearningStatus
-      -> PortfolioConnection
-      -> DayBadge
-      -> JSXBasics
-      -> WrapperRule
-      -> JSXRulesPractice
-           -> ClassNameRule
-           -> JavaScriptValuesRule
-           -> SelfClosingRule
-      -> CompositionPractice
-           -> CompositionIntro
-           -> ParentChildReminder
-      -> Day02FinalPractice
-           -> FinalHeader
-           -> ConceptSummary
-           -> JSXRuleList
-           -> SelfClosingReminder
+  -> Day03Props
+      -> WelcomeMessage
+      -> ProfileSummary
+      -> LearningTopicCard
+      -> ReadOnlyPropsPractice
+          -> ReadOnlyPropsReminder
+      -> ReusablePropsPractice
+          -> MiniProjectCard
+      -> Day03FinalPractice
+          -> FinalHeader
+          -> PortfolioFeatureCard
+          -> PropsRuleReminder
 ```
 
 ---
@@ -182,7 +178,7 @@ App
 |---|---|---|---|
 | Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Cleared | day1_notes.md |
 | Day 2 | React mental model, components, JSX | Cleared | day2_notes.md |
-| Day 3 | Props | Not started | - |
+| Day 3 | Props | Cleared | day3_notes.md |
 | Day 4 | TypeScript props with `type` and `interface` | Not started | - |
 | Day 5 | State with `useState` | Not started | - |
 | Day 6 | Event handling | Not started | - |
@@ -220,7 +216,7 @@ App
 Status:
 
 ```text
-In progress - Day 1 and Day 2 cleared
+In progress - Day 1, Day 2, and Day 3 cleared
 ```
 
 Completed:
@@ -228,12 +224,12 @@ Completed:
 ```text
 Day 1 - Setup, Vite, React app structure, main.tsx, App.tsx
 Day 2 - React mental model, components, JSX
+Day 3 - Props
 ```
 
 Remaining:
 
 ```text
-Day 3 - Props
 Day 4 - TypeScript props
 Day 5 - State with useState
 Day 6 - Event handling
@@ -365,12 +361,6 @@ createRoot uses that div to create React's root.
 .render(<App />) tells React what component to display there.
 ```
 
-Current Day 1 custom component:
-
-```text
-src/week1/day01-setup/Day01Setup.tsx
-```
-
 ---
 
 ## Day 2 completed summary
@@ -391,12 +381,6 @@ self-closing tags
 component composition
 portfolio mapping
 final mixed exercise
-```
-
-Important Day 2 flow:
-
-```text
-App -> Day02ComponentsJSX -> child components -> browser UI
 ```
 
 Important Day 2 rule:
@@ -422,14 +406,65 @@ CompositionPractice.tsx
 Day02FinalPractice.tsx
 ```
 
-Important Day 2 final exercise:
+Final mixed exercise status:
 
 ```text
-Day02FinalPractice
-  -> FinalHeader
-  -> ConceptSummary
-  -> JSXRuleList
-  -> SelfClosingReminder
+Cleared
+```
+
+---
+
+## Day 3 completed summary
+
+Day 3 covered:
+
+```text
+Props mental model
+parent-to-child data flow
+parent/child relationship based on rendering
+passing string props
+passing number props
+passing boolean props
+receiving props through the props object
+destructuring props
+props are read-only
+reusable components with props
+file splitting after the main Day 3 file became long
+portfolio mapping
+final mixed exercise
+```
+
+Important Day 3 rule:
+
+```text
+Props are inputs from parent to child.
+The parent owns the value.
+The child receives the value.
+The child should treat props as read-only.
+```
+
+Important Day 3 syntax:
+
+```tsx
+<Component name="Ashwin" />
+<Component yearsOfExperience={6} />
+<Component isOpenToWork={true} />
+```
+
+Props object style:
+
+```tsx
+function WelcomeMessage(props: { name: string }) {
+  return <h2>Hello, {props.name}</h2>
+}
+```
+
+Destructuring style:
+
+```tsx
+function LearningTopicCard({ topicName }: { topicName: string }) {
+  return <h2>{topicName}</h2>
+}
 ```
 
 Final mixed exercise status:
@@ -443,27 +478,26 @@ Cleared
 ## Next day
 
 ```text
-Day 3 - Props
+Day 4 - TypeScript props with type and interface
 ```
 
-Expected Day 3 focus:
+Expected Day 4 focus:
 
 ```text
-what props are
-parent-to-child data flow
-passing string props
-passing number props
-passing boolean props
-receiving props in a child component
-props are read-only
-destructuring props
-using props with JSX
-mapping props to portfolio components
+why inline prop typing gets messy
+creating reusable prop types
+using type for props
+using interface for props
+type vs interface at a beginner level
+optional props with ?
+union props for limited allowed values
+cleaning up Day 3 prop typing patterns
+portfolio mapping to real prop interfaces/types
 ```
 
 ---
 
-## Global React rules to build from Day 2
+## Global React rules to build from Day 3
 
 ```text
 React builds UI as a component tree.
@@ -479,6 +513,7 @@ Use import/export to split components across files.
 Use composition to build bigger UI from smaller components.
 Props flow from parent to child.
 Props are read-only.
+The direct parent is the component that renders the child.
 State is data a component owns and can update.
 Use the setter function to update state.
 Do not mutate state directly.
@@ -500,7 +535,7 @@ Prefer readable code over clever code.
 
 ---
 
-## Global TypeScript rules to build from Day 2
+## Global TypeScript rules to build from Day 3
 
 ```text
 TypeScript adds static typing to JavaScript.
@@ -515,7 +550,8 @@ Use useState<Type>() when TypeScript cannot infer the right type.
 Use unknown instead of any when data is truly unknown.
 Narrow unknown values before using them.
 Type API response shapes before rendering API data.
-Do not over-type obvious values just to look fancy.
+Do not over-type obvious values just to look advanced.
+Inline prop typing is acceptable for tiny exercises, but larger components should use type/interface.
 ```
 
 ---
@@ -528,6 +564,7 @@ Verification rule -> Use GitHub repo for actual code structure and live site for
 Components -> Hero, Projects, Contact, Navigation, Footer
 JSX -> Tailwind className markup in portfolio components
 Props -> AI assistant receives isOpen, setIsOpen, theme
+Reusable rendering -> Projects, Skills, Experience map arrays into repeated UI
 State -> isAIOpen, contact form state, loading state
 Events -> onClick, onChange, onSubmit
 Conditionals -> AI assistant open/closed, mobile menu, loading button text
@@ -543,25 +580,13 @@ Accessibility -> labels, buttons, links, aria-labels, focus states
 Performance -> lazy loading, image optimization, avoiding unnecessary re-renders
 ```
 
-Day 1 portfolio mapping:
+Verified Day 3 portfolio mapping:
 
 ```text
-Portfolio main.tsx renders App.
-Portfolio App.tsx acts as the app shell.
-Portfolio Home.tsx composes sections like Navigation, Hero, Projects, Contact, and Footer.
-Learning app main.tsx renders App.
-Learning app App.tsx currently renders Day01Setup.
-```
-
-Day 2 portfolio mapping:
-
-```text
-Day02ComponentsJSX maps to Home page composition.
-Day 2 child components map to focused portfolio section components.
-JSX className maps to Tailwind className usage in the portfolio.
-Curly braces map to rendering variables, props, state, arrays, and API data.
-Self-closing component syntax maps to components like Navigation, Hero, Projects, Contact, and Footer.
-Import/export maps to how portfolio sections are split into files and imported into parent components.
+Projects.tsx -> projects array rendered into repeated project UI; highlights and technologies are mapped.
+Skills.tsx -> skillCategories array rendered into repeated category and skill badge UI.
+Experience.tsx -> experiences array rendered into cards; technologies and achievements are mapped.
+SmartAIAssistantButton.tsx -> direct props example with isOpen, setIsOpen, and optional theme.
 ```
 
 ---
@@ -602,7 +627,8 @@ Weekly notes should summarize and organize; they should not paste all daily note
 | Missing key in list rendering | Add a stable key |
 | Bad key choice | Avoid index as key when list can reorder/change |
 | Props confusion | Props are passed by the parent and read by the child |
-| Interface confusion | Type/interface defines shape; it does not create actual values |
+| Interface/type confusion | Type/interface defines shape; it does not create actual values |
+| Direct parent confusion | Parent means the component that renders the child |
 | Controlled input confusion | Input value should come from state and onChange should update state |
 | Missing preventDefault | Forms refresh the page without `event.preventDefault()` |
 | Overusing useEffect | Do not use it for simple derived values |
@@ -613,26 +639,18 @@ Weekly notes should summarize and organize; they should not paste all daily note
 | Mixing server state and UI state | API data is server state; input/open/closed values are UI state |
 | Accessibility afterthought | Use labels, semantic elements, and keyboard-friendly behavior early |
 | Pretty UI hiding weak logic | Make it work correctly before polishing |
+| Prompt mismatch | A correct concept still fails if it does not match the requested output |
 
-Day 1 specific wording corrections:
-
-| Less accurate | Better |
-|---|---|
-| `index.html calls main.tsx` | `index.html loads main.tsx` |
-| `createRoot finds the root div` | `document.getElementById('root') finds the root div; createRoot uses it` |
-| `App.tsx is mounted` | `main.tsx mounts <App /> into the root div` |
-| `dev script has dev/build/lint/preview` | `scripts has those entries; dev specifically runs vite` |
-
-Day 2 specific corrections:
+Day 3 specific corrections:
 
 | Issue | Correction |
 |---|---|
-| Missed exact punctuation | Match exercise output exactly when asked |
-| Missed required `h2` | Read each prompt line and include all requested tags |
-| Used inaccurate render comment after refactor | Keep comments aligned with actual component tree |
-| Wrote `Seld-closing` | Corrected to `Self-closing` |
-| External placeholder image did not load | Not a React issue; JSX syntax was correct |
-| Mixed semicolon style | Prefer no semicolons for consistency unless formatter adds them |
+| Untyped `props` warning | Add a prop type, e.g. `props: { name: string }` |
+| Long prop type on one line | Break the type across multiple lines |
+| Long JSX component calls | Put each prop on its own line |
+| Moving Exercise 4 changed the direct parent | `ReadOnlyPropsPractice` became the direct parent of `ReadOnlyPropsReminder` |
+| Final exercise intent changed | Prompt was updated to intentionally show regular props object style in `FinalHeader` |
+| Missing `/5` format | Use `Difficulty: {difficultyLevel}/5` |
 
 ---
 
@@ -675,6 +693,11 @@ Props are inputs from parent to child.
 Props are read-only.
 The parent decides the prop values.
 The child receives and renders/uses them.
+Strings can use quotes.
+Numbers and booleans should use curly braces.
+Use `props.name` style to see the props object clearly.
+Use destructuring when multiple props make JSX noisy.
+Same component + different props = reusable UI.
 ```
 
 ### Day 4
@@ -684,6 +707,7 @@ Use type or interface to describe props.
 TypeScript checks whether required props are passed correctly.
 Optional props use ?.
 Union types limit allowed values.
+Move messy inline prop types into reusable named prop types.
 ```
 
 ### Day 5
@@ -742,7 +766,7 @@ portfolio architecture
 Current gap:
 
 ```text
-Need to rebuild these concepts through VS Code exercises from basics.
+Need to keep rebuilding these concepts through VS Code exercises from basics.
 Need stronger muscle memory, not just conceptual understanding.
 ```
 
@@ -751,7 +775,7 @@ Need stronger muscle memory, not just conceptual understanding.
 ## Current confidence level
 
 ```text
-Ready to start Day 3 - Props
+Ready to start Day 4 - TypeScript props with type and interface
 ```
 
 ---
@@ -765,9 +789,15 @@ Check the README and learning_index.md in this project.
 
 Continue my React + TypeScript learning from the project context.
 
-Start Day 3 - Props.
+Start Day 4 - TypeScript props with type and interface.
 
 Use Asabeneh's 30 Days Of React repo as the backbone, but modernize it for React + TypeScript + Vite.
 
+Before starting Day 4, briefly recap Day 3.
+
 Teach me one topic at a time. Give examples and VS Code exercises. Review my code strictly but fairly before moving forward.
+
+Use my portfolio GitHub repo and live site from the project sources when mapping concepts back to my portfolio. Do not guess exact portfolio implementation unless verified.
+
+Do you understand everything? Don't start immediately.
 ```
