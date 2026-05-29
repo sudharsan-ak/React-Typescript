@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 4
-Next update: only if Day 5 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 5
+Next update: only if Day 6 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -76,6 +76,23 @@ Use stable keys when rendering arrays.
 Use ul/li for real lists instead of p tags.
 ```
 
+## State rules learned so far
+
+```text
+State is component-owned data that can change over time.
+useState returns the current state value and a setter function.
+The initial value passed to useState is the first state value.
+Call the setter to update state.
+Do not reassign the state variable directly.
+Use functional updates when the next state depends on the previous state.
+Boolean state is useful for open/closed, visible/hidden, enabled/disabled, and loading states.
+String union state is useful when only fixed string options should be allowed.
+Object state is useful when related values belong together.
+Do not mutate object state directly.
+When updating one object field, create a new object with spread syntax.
+useState does not automatically merge object fields.
+```
+
 ## Day 4 examples to remember
 
 ```tsx
@@ -102,6 +119,44 @@ function ProjectStatusCard({
 }
 ```
 
+## Day 5 examples to remember
+
+Number state:
+
+```tsx
+const [practiceCount, setPracticeCount] = useState(0)
+setPracticeCount((previousCount) => previousCount + 1)
+```
+
+Boolean toggle:
+
+```tsx
+const [isPanelOpen, setIsPanelOpen] = useState(false)
+setIsPanelOpen((previousValue) => !previousValue)
+```
+
+String union state:
+
+```tsx
+type PortfolioSection = "Projects" | "Skills" | "Contact"
+const [selectedSection, setSelectedSection] = useState<PortfolioSection>("Projects")
+```
+
+Object state update:
+
+```tsx
+setLearningProfile((previousProfile) => ({
+  ...previousProfile,
+  focusArea: "Object state with useState",
+}))
+```
+
+Prevent a counter from going below zero:
+
+```tsx
+setCompletedExercises((previousCount) => Math.max(previousCount - 1, 0))
+```
+
 ## List rendering reminders
 
 ```text
@@ -126,6 +181,6 @@ Example:
 ## Current status
 
 ```text
-React rules captured through Day 4.
+React rules captured through Day 5.
 Update this file only when new reusable React/TypeScript coding rules are learned.
 ```

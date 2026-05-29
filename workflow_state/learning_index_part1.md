@@ -10,8 +10,8 @@ https://github.com/Asabeneh/30-Days-Of-React
 ```text
 Part 1 covers Week 1 only.
 Week 1: Day 1 to Day 7
-Current completed through: Day 4
-Next: Day 5 - State with useState
+Current completed through: Day 5
+Next: Day 6 - Event handling
 ```
 
 After Day 7 is cleared, update this file one final time and freeze it as the completed Week 1 archive.
@@ -26,7 +26,7 @@ After Day 7 is cleared, update this file one final time and freeze it as the com
 | Day 2 | React mental model, components, JSX | Cleared | `day2_notes.md` |
 | Day 3 | Props | Cleared | `day3_notes.md` |
 | Day 4 | TypeScript props with `type` and `interface` | Cleared | `day4_notes.md` |
-| Day 5 | State with `useState` | Not started | - |
+| Day 5 | State with `useState` | Cleared | `day5_notes.md` |
 | Day 6 | Event handling | Not started | - |
 | Day 7 | Conditional rendering and list rendering | Not started | - |
 
@@ -38,8 +38,8 @@ Status:
 
 ```text
 In progress
-Completed: Day 1 through Day 4
-Remaining: Day 5 through Day 7
+Completed: Day 1 through Day 5
+Remaining: Day 6 and Day 7
 ```
 
 Main Week 1 foundation:
@@ -162,26 +162,57 @@ Default values are assigned in component logic/destructuring.
 
 ---
 
-## Day 5 preview
+## Day 5 summary
+
+Covered:
+
+```text
+state mental model
+useState syntax
+current value and setter
+initial state value
+state vs props
+number state
+boolean state
+string state
+union state
+object state
+functional updates
+spread syntax
+no direct mutation
+basic conditional rendering with boolean state
+```
+
+Key reminder:
+
+```text
+State is component-owned data that can change.
+Call the setter to update state.
+Use functional updates when the next state depends on previous state.
+Use spread syntax when updating one field inside object state.
+Do not mutate state directly.
+```
+
+---
+
+## Day 6 preview
 
 Next:
 
 ```text
-Day 5 - State with useState
+Day 6 - Event handling
 ```
 
 Expected focus:
 
 ```text
-what state is
-when to use state
-useState syntax
-current value and setter
-initial value
-updating state
-functional updates
-state vs props
-portfolio mapping to isAIOpen and contact form state
+onClick basics
+inline handlers
+named handler functions
+event object basics
+passing arguments to handlers
+how handlers trigger state updates
+portfolio mapping to AI assistant toggle and contact form events
 ```
 
 ---
@@ -229,5 +260,5 @@ current_status.md
 ## Current confidence level
 
 ```text
-Ready for Day 5 - State with useState
+Ready for Day 6 - Event handling
 ```

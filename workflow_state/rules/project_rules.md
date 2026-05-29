@@ -49,9 +49,79 @@ Live site -> source of truth for visible behavior
 portfolio_mapping.md -> accumulated verified mappings
 ```
 
-Do not guess exact implementation if it has not been verified.
+Do not guess exact implementation if it has not been verified from the repo/live site or already captured in `portfolio_mapping.md`.
 
-User-facing GitHub links should use normal `github.com/.../blob/...` file pages, not `raw.githubusercontent.com` links, unless raw source is explicitly requested.
+User-facing GitHub links must use normal `github.com/.../blob/...` file pages, not `raw.githubusercontent.com` links, unless raw source is explicitly requested.
+
+### User-facing portfolio mapping response format
+
+Use compact paragraph style.
+
+Do **not** use a bullet-list metadata block like:
+
+```text
+- Concept:
+- Verified file:
+- What it shows:
+```
+
+Do **not** make the filename itself a clickable markdown link.
+
+Do **not** use visible markdown GitHub links in chat responses, because they render visible `GitHub ↗` text instead of the desired GitHub/source chip style.
+
+Use this user-facing format:
+
+```md
+## Portfolio mapping
+
+**<Concept> - `<FileName.tsx>`**
+
+Your `<FileName.tsx>` shows <short verified behavior>. This maps to the current topic because <short learning connection>. <GitHub/source citation chip>
+```
+
+Rules:
+
+```text
+- Show the verified filename as plain inline code, e.g. `Contact.tsx`.
+- Do not make the filename clickable.
+- Do not show the raw GitHub URL.
+- Do not use arrow-link filename formatting.
+- Do not write `(github.com)` as visible text.
+- Do not write visible markdown links with `GitHub` as the link text in user-facing portfolio mappings.
+- Use a GitHub/source citation chip after the explanation when available.
+- If a GitHub/source citation chip cannot be generated, mention the verified filename only and do not force a visible markdown link.
+- The underlying source, when available, should point to the normal GitHub blob file page.
+```
+
+Correct visual goal:
+
+```md
+## Portfolio mapping
+
+**Object state with `useState` - `Contact.tsx`**
+
+Your `Contact.tsx` keeps related form values like `name`, `email`, and `message` together in object state. Topic 5 is the smaller version of that same idea: keep related values in one object, then update one field by creating a new object with spread syntax instead of mutating the old state. <GitHub/source citation chip>
+```
+
+Incorrect examples:
+
+```md
+- Concept: Object state with `useState`
+- Verified file: clickable `Contact.tsx` markdown link
+- What it shows: ...
+```
+
+```md
+Verified file: clickable `Contact.tsx` markdown link
+```
+
+```md
+Your `Contact.tsx` shows object state. visible GitHub markdown link
+```
+
+```md
+Your `Contact.tsx` shows object state. (github.com)
+```
 
 ## Exercise rules
 
@@ -59,7 +129,7 @@ React exercises should be code-first and visible in the browser or clear at the 
 
 Use copy-paste starter comment blocks.
 
-Good exercise format:
+Good topic exercise format:
 
 ```tsx
 // Day X - Topic Exercise
@@ -80,6 +150,8 @@ where to render the component
 ```
 
 Do not give the completed solution unless the user asks.
+
+For final mixed exercises, do not provide a fully solved line-by-line scaffold. Use task-based prompts with light hints instead. Avoid giving exact type definitions, full state declarations, or complete setter code unless the user asks for help. Final exercises should test recall and problem-solving, not copying.
 
 ## Review rules
 

@@ -52,6 +52,26 @@ In my portfolio, the AI assistant button uses a typed props interface. It receiv
 Optional props are useful when a parent may not always pass a value. Union props are useful when only a fixed set of values should be allowed. In my portfolio, the AI assistant theme is a good example: theme is optional, and when it is passed, it is limited to known theme values instead of any random string.
 ```
 
+## State and useState
+
+Short version:
+
+```text
+State is component-owned data that can change over time. useState gives me the current value and a setter function, and calling the setter tells React to re-render with the new value.
+```
+
+Portfolio version:
+
+```text
+In my portfolio, state shows up in a few places. App owns theme state and limits it to known values like light, dark, nightowl, and system. The AI assistant uses boolean open/closed state, where clicking the button toggles the assistant. The Contact form groups related values like name, email, and message into object state, then updates the matching field as the user types.
+```
+
+Functional update version:
+
+```text
+When the next state depends on the previous state, I use the functional update form. For example, toggling a boolean uses the previous value and returns the opposite value. For object state, I create a new object with spread syntax and update only the field that changed instead of mutating the existing object.
+```
+
 ## Project cards and array rendering
 
 ```text
@@ -81,6 +101,6 @@ My portfolio is a React + TypeScript app built around reusable components and cl
 ## Current status
 
 ```text
-Interview wording captured through Day 4.
+Interview wording captured through Day 5.
 Update this file only when new useful interview explanations are added.
 ```
