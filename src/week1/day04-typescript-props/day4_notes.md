@@ -4,13 +4,11 @@
 
 Day 4 is cleared.
 
-Main goal: clean up Day 3 inline prop typing by using named `type` and `interface` definitions, then apply optional props, union props, default values, array props, and reusable portfolio-style typed components.
-
----
+Main goal: clean up inline prop typing by using named `type` and `interface` definitions, then apply optional props, union props, default values, array props, and reusable portfolio-style typed components.
 
 ## 1. Why inline prop typing gets messy
 
-Day 3 used inline prop typing like this:
+Inline prop typing is valid, but it gets noisy when a component has several props.
 
 ```tsx
 function InlineProfileCard(props: {
@@ -22,8 +20,6 @@ function InlineProfileCard(props: {
   return <h2>{props.fullName}</h2>
 }
 ```
-
-This is valid, but it gets noisy when a component has several props.
 
 Better rule:
 
@@ -42,8 +38,6 @@ component = receives and renders the values
 
 A type/interface does not create actual data.
 
----
-
 ## 2. Named prop types using `type`
 
 A `type` can describe the shape of a component's props.
@@ -55,40 +49,23 @@ type ProfileCardProps = {
   yearsOfExperience: number
   isOpenToWork: boolean
 }
+```
 
-function ProfileCard({
-  fullName,
-  role,
-  yearsOfExperience,
-  isOpenToWork,
-}: ProfileCardProps) {
-  return (
-    <section>
-      <h2>{fullName}</h2>
-      <p>Role: {role}</p>
-      <p>Experience: {yearsOfExperience} years</p>
-      <p>Status: {isOpenToWork ? "Open to work" : "Not looking"}</p>
-    </section>
-  )
+Use it in the component:
+
+```tsx
+function ProfileCard({ fullName, role }: ProfileCardProps) {
+  return <h2>{fullName}</h2>
 }
 ```
 
-This separates the prop contract from the rendering logic.
+This separates the prop contract from rendering logic.
 
-Common naming pattern:
+Naming pattern:
 
 ```text
 ComponentNameProps
 ```
-
-Example:
-
-```text
-ProfileCard -> ProfileCardProps
-PortfolioTypedCard -> PortfolioTypedCardProps
-```
-
----
 
 ## 3. Props with `interface`
 
@@ -103,31 +80,7 @@ interface PortfolioProjectCardProps {
 }
 ```
 
-Used in a component:
-
-```tsx
-function PortfolioProjectCard({
-  title,
-  description,
-  technologies,
-  isFeatured,
-}: PortfolioProjectCardProps) {
-  return (
-    <section>
-      <h2>{title}</h2>
-      <p>Description: {description}</p>
-      <p>Technologies: {technologies.join(", ")}</p>
-      <p>Featured: {isFeatured ? "Yes" : "No"}</p>
-    </section>
-  )
-}
-```
-
-### Beginner rule: `type` vs `interface`
-
-For React props, both are fine.
-
-Practical rule for now:
+Beginner rule:
 
 ```text
 Object-shaped props -> type or interface
@@ -138,15 +91,13 @@ Consistency matters more than arguing type vs interface
 Example:
 
 ```tsx
-type Status = "live" | "in-progress" | "planned"
+type Status = 'live' | 'in-progress' | 'planned'
 
 interface StatusCardProps {
   title: string
   status: Status
 }
 ```
-
----
 
 ## 4. Optional props
 
@@ -172,17 +123,17 @@ When a prop is optional, the component must handle the missing case.
 Fallback inside JSX:
 
 ```tsx
-<p>Category: {category ?? "General"}</p>
+<p>Category: {category ?? 'General'}</p>
 ```
 
 Default value during destructuring:
 
 ```tsx
 function ProjectStatusCard({
-  category = "General",
+  category = 'General',
   isFeatured = false,
 }: ProjectStatusCardProps) {
-  // use category and isFeatured safely
+  // safe to use category and isFeatured
 }
 ```
 
@@ -191,38 +142,20 @@ Important correction:
 ```text
 A union type limits allowed values.
 A default value is assigned in component logic.
-```
-
 The type itself does not create a default.
-
----
+```
 
 ## 5. Union props
 
 Union types limit a value to a fixed list of allowed options.
 
 ```tsx
-type ProjectStatus = "live" | "in-progress" | "planned"
+type ProjectStatus = 'live' | 'in-progress' | 'planned'
 ```
 
-Then use it in props:
+Using a union is better than `status: string` when only fixed values are valid.
 
-```tsx
-interface ProjectStatusCardProps {
-  title: string
-  status: ProjectStatus
-}
-```
-
-This is better than:
-
-```tsx
-status: string
-```
-
-because `string` would allow invalid values like `"banana"`.
-
-Union props are useful for controlled values like:
+Union props are useful for:
 
 ```text
 status
@@ -230,13 +163,12 @@ variant
 theme
 priority
 size
+selected tab
 ```
-
----
 
 ## 6. Array props and `.map()`
 
-Array props were practiced with:
+Array props were practiced with values like:
 
 ```tsx
 technologies: string[]
@@ -244,7 +176,7 @@ highlights: string[]
 skills: string[]
 ```
 
-Rendering arrays with `.map()`:
+Rendering arrays:
 
 ```tsx
 <ul>
@@ -257,14 +189,11 @@ Rendering arrays with `.map()`:
 Meaning:
 
 ```text
-skills.map loops through each skill
-skill is the current array item
-<li> renders one list item
+map loops through each item
+one JSX element is returned per item
 key gives React a stable identity for that item
-{skill} displays the visible text
+key does not display in the browser
 ```
-
-The `>` in `<li key={skill}>` simply closes the opening tag. The visible content starts after that.
 
 Better semantic HTML:
 
@@ -272,13 +201,7 @@ Better semantic HTML:
 Use ul/li for real lists instead of multiple p tags.
 ```
 
----
-
 ## 7. File organization after Day 4
-
-Topic 4 and Topic 5 became large enough to split into focused files.
-
-Current Day 4 folder:
 
 ```text
 src/week1/day04-typescript-props/
@@ -297,36 +220,29 @@ PortfolioTypedCardPractice.tsx = portfolio-style typed reusable card practice
 Day04FinalPractice.tsx = final mixed Day 4 checkpoint
 ```
 
-Good structure rule:
+Good structure:
 
 ```text
-Types/interfaces first
-child components next
-main practice component after that
-export default at the bottom
+Types/interfaces first.
+Child components next.
+Main practice component after that.
+export default at the bottom.
 ```
-
-For the main day file:
-
-```text
-import focused practice components
-render them in learning order
-keep Day04TypeScriptProps as the composer
-```
-
----
 
 ## 8. Exercises completed
 
-Completed:
-
 ```text
-Topic 1 - Inline prop typing
-Topic 2 - Named prop types using type
-Topic 3 - Props with interface and beginner type vs interface
-Topic 4 - Optional props and union props
-Topic 5 - Portfolio-style reusable typed card
-Final mixed exercise - Portfolio section summary cards
+inline prop typing
+named prop types using type
+props using interface
+beginner type vs interface
+optional props
+union props
+default values
+array props
+map rendering
+portfolio-style typed reusable card
+final mixed exercise
 ```
 
 Final exercise used:
@@ -337,72 +253,51 @@ SectionPriority union type
 PortfolioSectionCardProps interface
 optional priority
 optional githubUrl
-default priority = "medium"
-githubUrl fallback = "Not available"
+default priority = medium
+githubUrl fallback = Not available
 skills and highlights arrays rendered with ul/li + map
 three reusable typed cards
 ```
 
 Final exercise status: cleared.
 
----
-
 ## 9. Mistakes and corrections
 
 | Issue | Correction |
 |---|---|
 | Inline prop typing got bulky | Move larger prop shapes into named `type` or `interface` |
-| Confused union type with default value | Union limits allowed values; default is set inside component logic |
-| Missing exact label text like `Status:` | Match the prompt output exactly |
-| Used custom label like `Category Style 1` | Use requested output when the prompt specifies exact text |
-| Assumed uploaded/rendered file was missing import/render | Verify the current uploaded/local file carefully before calling it out |
-| Asked for placement but got full solution | Going forward, give exact placement comments without solving the exercise unless asked |
-| Used raw GitHub links in explanations | Use normal GitHub file pages in user-facing responses; raw links only for internal inspection if needed |
-| Used p tags for repeated list data | Use `ul/li` for real lists in final practice |
+| Confused union type with default value | Union limits values; default is set in component logic |
+| Missing exact labels like `Status:` | Match requested output when prompt specifies text |
+| Used custom label instead of requested label | Follow prompt wording in exercises |
+| Asked for placement but got full solution | Give placement guidance, not solved code, unless asked |
+| Used raw GitHub links | Use normal GitHub file pages in user-facing responses |
+| Used `p` tags for repeated list data | Use `ul/li` for real lists |
 
-Recurring Day 4 reminder:
+Recurring reminder:
 
 ```text
-A concept can be correct but still fail the prompt if the rendered text does not match.
+A concept can be correct but still fail the prompt if rendered text does not match.
 ```
-
----
 
 ## 10. Portfolio mapping
 
-Day 4 connects directly to the actual portfolio.
-
-### `App.tsx` - union type for theme
+Day 4 connects directly to the real portfolio.
 
 `App.tsx` uses a limited theme union:
 
 ```tsx
-useState<"light" | "dark" | "nightowl" | "system">("light")
+useState<'light' | 'dark' | 'nightowl' | 'system'>('light')
 ```
 
-This is the same idea as:
+This prevents random invalid theme values.
 
-```tsx
-type ProjectStatus = "live" | "in-progress" | "planned"
-```
-
-It prevents random invalid values.
-
-Normal GitHub file page:
-
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/App.tsx
-```
-
-### `SmartAIAssistantButton.tsx` - interface, optional prop, union prop
-
-The AI assistant button has a props interface with required and optional props:
+`SmartAIAssistantButton.tsx` has a props interface with required and optional props:
 
 ```tsx
 interface Props {
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
-  theme?: "light" | "dark" | "nightowl" | "system"
+  theme?: 'light' | 'dark' | 'nightowl' | 'system'
 }
 ```
 
@@ -411,42 +306,12 @@ Mapping:
 ```text
 interface Props -> typed prop shape
 theme? -> optional prop
-"light" | "dark" | "nightowl" | "system" -> union prop
+theme union -> only known theme values allowed
 ```
 
-Normal GitHub file page:
-
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/components/SmartAIAssistantButton.tsx
-```
-
-### `Projects.tsx` - array data and repeated rendering
-
-The Projects section stores project data with arrays like technologies and highlights, then maps them into repeated UI.
-
-Mapping:
-
-```tsx
-type PortfolioTypedCardProps = {
-  title: string
-  description: string
-  technologies: string[]
-  highlights: string[]
-  githubUrl?: string
-}
-```
-
-Normal GitHub file page:
-
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/components/Projects.tsx
-```
-
----
+`Projects.tsx` stores project data with arrays like technologies and highlights, then maps them into repeated UI. This maps to object-shaped data, array fields, `.map()`, keys, and reusable card-style UI.
 
 ## 11. Interview-ready wording
-
-Use this:
 
 ```text
 In my portfolio, TypeScript helps make component props safer and easier to understand. For example, the AI assistant button receives typed props like isOpen, setIsOpen, and an optional theme. The theme is also restricted to known values like light, dark, nightowl, and system, so TypeScript catches invalid theme values early. In the Projects section, project data follows a reusable shape with fields like title, description, technologies, highlights, image path, and GitHub URL, and the UI maps over those arrays to render repeated project cards and badges.
@@ -457,8 +322,6 @@ Short version:
 ```text
 TypeScript lets me define exactly what props a component expects. In my portfolio, that shows up in the AI assistant props, theme union values, and project-card data where arrays like technologies and highlights are rendered into repeated UI.
 ```
-
----
 
 ## 12. What to remember before Day 5
 
@@ -477,8 +340,4 @@ Use ul/li for real lists.
 Parent passes real values; type/interface only defines the expected shape.
 ```
 
-Next:
-
-```text
-Day 5 - State with useState
-```
+Next: Day 5 - State with useState.

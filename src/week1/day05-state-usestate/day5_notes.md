@@ -6,8 +6,6 @@ Day 5 is cleared.
 
 Main goal: understand state as component-owned changing data, practice `useState`, update number/boolean/string/object state safely, use functional updates, and connect state back to the real portfolio.
 
----
-
 ## 1. State mental model
 
 State is data a component owns and can update.
@@ -33,7 +31,12 @@ initialValue = first value React uses
 
 When state changes, React re-renders the component with the new value.
 
----
+Main rule:
+
+```text
+Call the setter to update state.
+Do not mutate or reassign the state variable directly.
+```
 
 ## 2. Number state
 
@@ -43,28 +46,16 @@ Number state was practiced with a counter.
 const [practiceCount, setPracticeCount] = useState(0)
 ```
 
-Good update pattern when the next value depends on the previous value:
+Use a functional update when the next value depends on the previous value:
 
 ```tsx
 setPracticeCount((previousCount) => previousCount + 1)
 ```
 
-Decrease:
-
-```tsx
-setPracticeCount((previousCount) => previousCount - 1)
-```
-
-Reset:
+Resetting to a fixed value can be direct:
 
 ```tsx
 setPracticeCount(0)
-```
-
-Important rule:
-
-```text
-Use the setter. Do not mutate or reassign the state variable directly.
 ```
 
 For real UI, if a counter should not go below `0`, clamp it:
@@ -74,8 +65,6 @@ setCompletedExercises((previousCount) => Math.max(previousCount - 1, 0))
 ```
 
 Or disable the button when the count is already `0`.
-
----
 
 ## 3. Boolean state
 
@@ -114,20 +103,14 @@ If isPanelOpen is true, render the paragraph.
 If false, render nothing.
 ```
 
----
-
 ## 4. String state and union state
 
 String state was practiced with selected portfolio sections.
 
 ```tsx
-const [selectedSection, setSelectedSection] = useState<PortfolioSection>("Projects")
-```
+type PortfolioSection = 'Projects' | 'Skills' | 'Contact'
 
-Union type used:
-
-```tsx
-type PortfolioSection = "Projects" | "Skills" | "Contact"
+const [selectedSection, setSelectedSection] = useState<PortfolioSection>('Projects')
 ```
 
 This is better than plain `string` when only fixed values are allowed.
@@ -150,13 +133,9 @@ priority
 variant
 ```
 
----
-
 ## 5. Object state
 
-Object state is for grouped related values.
-
-Example:
+Object state is useful when related values belong together.
 
 ```tsx
 type LearningProfile = {
@@ -164,31 +143,18 @@ type LearningProfile = {
   role: string
   focusArea: string
 }
-```
 
-State:
-
-```tsx
 const [learningProfile, setLearningProfile] = useState<LearningProfile>({
-  name: "Sudharsan",
-  role: "Full Stack Software Engineer",
-  focusArea: "React state",
+  name: 'Sudharsan',
+  role: 'Full Stack Software Engineer',
+  focusArea: 'React state',
 })
-```
-
-Mental model:
-
-```text
-LearningProfile = TypeScript shape
-useState(...) object = initial state value
-learningProfile = current object state
-setLearningProfile = setter function
 ```
 
 Do not mutate object state directly:
 
 ```tsx
-learningProfile.focusArea = "Object state with useState"
+learningProfile.focusArea = 'Object state with useState'
 ```
 
 Correct pattern:
@@ -196,11 +162,11 @@ Correct pattern:
 ```tsx
 setLearningProfile((previousProfile) => ({
   ...previousProfile,
-  focusArea: "Object state with useState",
+  focusArea: 'Object state with useState',
 }))
 ```
 
-The spread syntax means:
+Spread syntax means:
 
 ```text
 copy the old object
@@ -211,38 +177,21 @@ return a new object
 
 Important warning:
 
-```tsx
-setLearningProfile({
-  focusArea: "Object state with useState",
-})
+```text
+useState does not automatically merge object fields.
+If you update object state without spreading the old object, you can lose other fields.
 ```
-
-This is wrong if the object also needs `name` and `role`, because `useState` does not automatically merge object fields.
-
----
 
 ## 6. Functional updates
 
 Functional updates were used throughout Day 5.
 
-Number:
-
 ```tsx
 setPracticeCount((previousCount) => previousCount + 1)
-```
-
-Boolean:
-
-```tsx
 setIsPanelOpen((previousValue) => !previousValue)
-```
-
-Object:
-
-```tsx
 setLearningProfile((previousProfile) => ({
   ...previousProfile,
-  role: "React + TypeScript Learner",
+  role: 'React + TypeScript Learner',
 }))
 ```
 
@@ -252,11 +201,7 @@ Rule:
 If the next state depends on the previous state, use the functional update form.
 ```
 
----
-
 ## 7. File organization after Day 5
-
-Day 5 used one main topic composer and one final practice file.
 
 ```text
 src/week1/day05-state-usestate/
@@ -274,23 +219,24 @@ Day05FinalPractice.tsx = final mixed state checkpoint
 Good structure:
 
 ```text
-Topic components stay in the day composer while the file is manageable.
+Topic components can stay in the day composer while the file is manageable.
 Final mixed exercise can be split into its own file when the main day file is already large.
 ```
 
----
-
 ## 8. Exercises completed
 
-Completed:
-
 ```text
-Topic 1 - State mental model + useState syntax
-Topic 2 - Number state + functional updates
-Topic 3 - Boolean state + toggle/show-hide UI
-Topic 4 - String state + union state
-Topic 5 - Object state + no direct mutation
-Final mixed exercise - React learning dashboard
+state mental model
+useState syntax
+number state
+boolean state
+string state
+union state
+object state
+functional updates
+spread syntax
+conditional rendering preview
+final mixed exercise
 ```
 
 Final exercise practiced:
@@ -308,8 +254,6 @@ separate final practice file
 
 Final exercise status: cleared.
 
----
-
 ## 9. Corrections and reminders
 
 | Issue | Reminder |
@@ -318,63 +262,31 @@ Final exercise status: cleared.
 | Updating object state without spread | You may accidentally remove other fields |
 | Counter can go below zero | Use `Math.max(previousCount - 1, 0)` or disable the button |
 | Setter naming | Prefer clear setter names like `setIsSummaryVisible` |
-| Final exercise scaffolds | Final exercises should be task-based, not line-by-line solved templates |
+| Final exercise scaffolds | Final exercises should be task-based, not fully solved templates |
 
-Main recurring reminder:
+Main reminder:
 
 ```text
 React only knows state changed when the setter is called.
 ```
 
----
-
 ## 10. Portfolio mapping
 
 Day 5 connects directly to the real portfolio.
 
-### Theme state - `App.tsx`
-
 `App.tsx` uses `useState` with a limited theme union:
 
 ```tsx
-useState<"light" | "dark" | "nightowl" | "system">("light")
+useState<'light' | 'dark' | 'nightowl' | 'system'>('light')
 ```
 
-This maps to Day 5 string union state.
+This maps to string union state.
 
-Normal GitHub file page:
+`SmartAIAssistantButton.tsx` uses boolean open/closed state. A click toggles open state with a functional update.
 
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/App.tsx
-```
-
-### AI assistant open state - `SmartAIAssistantButton.tsx`
-
-The AI assistant flow uses boolean open/closed state. The child receives `isOpen` and `setIsOpen`, then toggles open state with a functional update.
-
-This maps to Day 5 boolean state and toggle state.
-
-Normal GitHub file page:
-
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/components/SmartAIAssistantButton.tsx
-```
-
-### Contact form state - `Contact.tsx`
-
-The contact form uses related values like `name`, `email`, and `message` together as form state. This maps to Day 5 object state.
-
-Normal GitHub file page:
-
-```text
-https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/components/Contact.tsx
-```
-
----
+`Contact.tsx` uses related values like `name`, `email`, and `message` together as form state. This maps to object state.
 
 ## 11. Interview-ready wording
-
-Use this:
 
 ```text
 State is component-owned data that can change over time. In React, I use useState to store the current value and a setter function to update it. In my portfolio, this shows up in a few places: App owns theme state with a limited set of allowed theme values, the AI assistant uses boolean open/closed state, and the Contact form groups related fields like name, email, and message into object state. When updating state based on the previous value, I use functional updates, and when updating object state, I create a new object with spread syntax instead of mutating the old one.
@@ -385,8 +297,6 @@ Short version:
 ```text
 useState lets a component own changing data. I use functional updates when the next value depends on the previous value, and I use spread syntax for object state so React gets a new object instead of a mutated one.
 ```
-
----
 
 ## 12. What to remember before Day 6
 
@@ -402,8 +312,4 @@ Use spread syntax when updating one object field.
 Boolean state commonly controls show/hide and open/closed UI.
 ```
 
-Next:
-
-```text
-Day 6 - Event handling
-```
+Next: Day 6 - Event handling.

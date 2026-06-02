@@ -1,25 +1,14 @@
-# Day 1 Notes - Setup, Vite, React App Structure, main.tsx, App.tsx
+# Day 1 Notes - Setup, Vite, React App Structure, `main.tsx`, `App.tsx`
 
 ## Day status
 
 Day 1 is cleared.
 
-Covered:
+Main goal: set up one React + TypeScript Vite app, understand the startup flow, and render the first custom learning component.
 
-- Vite + React + TypeScript setup
-- generated project files and folders
-- `index.html`, `main.tsx`, and `App.tsx` startup flow
-- `createRoot`, `StrictMode`, and the root div
-- first visible UI edit in `App.tsx`
-- first custom Day 1 component in `src/week1/day01-setup/Day01Setup.tsx`
+## 1. Core setup
 
-## 1. Vite setup
-
-Vite is the local development tool used to create and run the React app.
-
-The app was created with React + TypeScript using Vite.
-
-Important commands:
+The project uses one Vite app for all React practice days.
 
 ```bash
 npm create vite@latest . -- --template react-ts
@@ -29,128 +18,52 @@ npm run dev
 
 Meaning:
 
-- `npm create vite@latest . -- --template react-ts` creates a React + TypeScript Vite app in the current folder.
-- `npm install` installs all dependencies listed in `package.json`.
-- `npm run dev` starts the Vite development server.
-
-The local app runs at a localhost URL like:
-
 ```text
-http://localhost:5173/
+create vite -> creates the React + TypeScript app
+npm install -> installs dependencies
+npm run dev -> starts the Vite dev server
 ```
 
-## 2. Folder setup
+Important decision:
 
-The React practice app is kept as one single Vite app.
+```text
+Use one React + TypeScript Vite app.
+Do not create one Vite app per day.
+```
 
-We are not creating one Vite app per day or per week. That would create duplicate `package.json`, `node_modules`, and dev servers.
+This avoids duplicated `package.json`, `node_modules`, and dev servers.
 
-The chosen structure is:
+## 2. Key files
 
 ```text
 React-TypeScript/
   src/
+    main.tsx
+    App.tsx
     week1/
       day01-setup/
         Day01Setup.tsx
-        main-tsx-notes.md
-    App.tsx
-    main.tsx
 ```
 
-This matches the Python learning style while still keeping React as one connected app.
+| File | Role |
+|---|---|
+| `index.html` | Gives React `<div id="root"></div>` and loads `main.tsx` |
+| `main.tsx` | Starts React and renders `<App />` into the root div |
+| `App.tsx` | Root component and current-day switchboard |
+| `Day01Setup.tsx` | First custom Day 1 learning component |
+| `package.json` | Stores scripts and dependencies |
+| `node_modules/` | Installed packages, do not edit manually |
+| `package-lock.json` | Locks dependency versions, do not edit manually |
 
-Current Day 1 folder:
-
-```text
-src/week1/day01-setup/
-```
-
-## 3. Important generated files
-
-### `package.json`
-
-`package.json` is the project control file.
-
-It stores project metadata, dependencies, and scripts.
-
-Important scripts:
+Important script:
 
 ```json
-"scripts": {
-  "dev": "vite",
-  "build": "tsc -b && vite build",
-  "lint": "eslint .",
-  "preview": "vite preview"
-}
+"dev": "vite"
 ```
 
-Key correction:
+## 3. Startup flow
 
-- The scripts section contains `dev`, `build`, `lint`, and `preview`.
-- The `dev` script specifically runs `vite`.
-
-### `node_modules/`
-
-`node_modules` stores installed dependencies.
-
-Do not edit this folder manually.
-
-If it is missing, run:
-
-```bash
-npm install
-```
-
-### `package-lock.json`
-
-`package-lock.json` locks exact dependency versions.
-
-Do not manually edit this file.
-
-### `index.html`
-
-`index.html` is the first file loaded by the browser.
-
-It contains the root div:
-
-```html
-<div id="root"></div>
-```
-
-It also loads the React entry file:
-
-```html
-<script type="module" src="/src/main.tsx"></script>
-```
-
-### `src/main.tsx`
-
-`main.tsx` is the React entry point.
-
-It imports React tools, global CSS, and `App`, then renders `<App />` into the root div from `index.html`.
-
-### `src/App.tsx`
-
-`App.tsx` is the root React component.
-
-At the start, it showed the default Vite page. Later, it was simplified to render the custom Day 1 component.
-
-Current role:
-
-```text
-App.tsx = switchboard for the current learning day
-```
-
-### `src/index.css` and `src/App.css`
-
-These contain default Vite styling.
-
-The current UI still has some default styling, which is why the list bullets look slightly awkward. That is not a React issue.
-
-## 4. Startup flow
-
-The core startup flow is:
+Core flow:
 
 ```text
 index.html -> main.tsx -> App.tsx -> Day01Setup.tsx -> browser UI
@@ -159,23 +72,17 @@ index.html -> main.tsx -> App.tsx -> Day01Setup.tsx -> browser UI
 Expanded version:
 
 ```text
-index.html provides <div id="root"></div>
-index.html loads main.tsx
-main.tsx imports React tools, global CSS, and App
+index.html provides the root div
+index.html loads /src/main.tsx
+main.tsx imports React tools, CSS, and App
 main.tsx finds the root div
-createRoot creates a React root using that div
-React renders <App /> into that root
-App.tsx renders Day01Setup
-Day01Setup returns JSX shown in the browser
+createRoot creates React's root using that div
+React renders <App /> into the root
+App.tsx renders the current learning component
+The component returns JSX shown in the browser
 ```
 
-## 5. main.tsx notes
-
-### What does `main.tsx` do?
-
-`main.tsx` is the entry point of the React app.
-
-It imports the React tools, global CSS, and the root `App` component. Then it connects React to the browser by rendering `<App />` into the root div from `index.html`.
+## 4. `main.tsx` mental model
 
 Simple version:
 
@@ -183,84 +90,34 @@ Simple version:
 main.tsx = the file that plugs React into the browser
 ```
 
-### What does `createRoot` do?
-
-`createRoot` creates a React root using a real HTML element from the page.
-
-In this app, `document.getElementById('root')` finds the HTML element with `id="root"`.
-
-Then `createRoot(...)` uses that element to create React's root.
-
-Then `.render(<App />)` tells React what component to display inside that root.
-
-### What does `document.getElementById('root')` find?
-
-It finds this div from `index.html`:
-
-```html
-<div id="root"></div>
-```
-
-That div is the empty container where React mounts the app.
-
-### What does `<App />` represent?
-
-`<App />` represents the root React component.
-
-In this Vite app, `App.tsx` controls the visible UI that appears in the browser.
-
-### What is `StrictMode` used for?
-
-`StrictMode` is a React development helper.
-
-It does not show anything in the UI. It adds extra checks during development and helps catch possible issues or bad patterns earlier.
-
-### What does the `!` mean in `document.getElementById('root')!`?
-
-The `!` is TypeScript's non-null assertion.
-
-It tells TypeScript: trust me, this value will not be null.
-
-Without it, TypeScript knows `document.getElementById('root')` could technically return `null` if the root div does not exist in `index.html`.
-
-## 6. App.tsx notes
-
-`App.tsx` is the first component rendered by `main.tsx`.
-
-The default Vite `App.tsx` originally showed:
+Important parts:
 
 ```text
-Get started
-Count is 0
+document.getElementById('root') finds the root div from index.html
+createRoot(...) creates React's root using that div
+.render(<App />) tells React what component to display
 ```
 
-A visible edit was made:
+`StrictMode` is a development helper. It does not show visible UI. It adds extra checks during development.
 
-```tsx
-<h1>Day 1 - React + TypeScript Setup</h1>
-```
+The `!` in `document.getElementById('root')!` is TypeScript's non-null assertion. It tells TypeScript the root div exists.
 
-The browser updated automatically after saving because Vite HMR detected the change.
-
-Important wording correction:
-
-Do not say `App.tsx` itself is mounted.
+## 5. `App.tsx` mental model
 
 Better wording:
 
 ```text
-main.tsx mounts the <App /> component into the root div, and App.tsx returns the UI that React renders in the browser.
+main.tsx mounts the <App /> component into the root div.
+App.tsx returns the UI that React renders in the browser.
 ```
 
-## 7. First custom component
-
-Created:
+Do not say:
 
 ```text
-src/week1/day01-setup/Day01Setup.tsx
+App.tsx itself is mounted.
 ```
 
-Then `App.tsx` was simplified to render it:
+For this project, `App.tsx` acts as a switchboard:
 
 ```tsx
 import Day01Setup from './week1/day01-setup/Day01Setup'
@@ -272,131 +129,72 @@ function App() {
 export default App
 ```
 
-This makes `App.tsx` a clean switchboard for the current day.
+## 6. First custom component
 
-## 8. Final mini exercise
-
-Final component goal:
-
-- one heading
-- one section for files learned today
-- one section for startup flow
-
-Final component structure:
-
-```tsx
-function Day01Setup() {
-  return (
-    <main>
-      <h1>Day 1 - React + TypeScript Setup</h1>
-
-      <section>
-        <h2>Files I learned today</h2>
-        <ul>
-          <li>index.html gives React a root div.</li>
-          <li>main.tsx mounts the App component.</li>
-          <li>App.tsx controls the visible UI.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Startup flow</h2>
-        <p>
-          index.html loads main.tsx, main.tsx renders App, and App returns the UI shown in the browser.
-        </p>
-      </section>
-    </main>
-  )
-}
-
-export default Day01Setup
-```
-
-The component rendered correctly in the browser.
-
-## 9. Mistakes and corrections
-
-### Correction 1
-
-Vague answer:
+Created:
 
 ```text
-dev script has dev, build, lint, preview
+src/week1/day01-setup/Day01Setup.tsx
 ```
 
-Better answer:
+The final Day 1 component rendered:
 
 ```text
-The scripts section has dev, build, lint, and preview. The dev script specifically runs vite.
+one main heading
+one section for files learned
+one section for startup flow
 ```
 
-### Correction 2
+This confirmed that the app was wired correctly from `index.html` to the browser UI.
 
-Less accurate wording:
+## 7. Exercises completed
 
 ```text
-App.tsx gets mounted
+Vite setup
+Dependency install
+Dev server start
+Default App.tsx edit
+Startup flow walkthrough
+First custom component
+App.tsx switchboard rendering
+Final mini exercise
 ```
 
-Better wording:
+Final exercise status: cleared.
+
+## 8. Corrections and reminders
+
+| Issue | Better wording |
+|---|---|
+| `index.html calls main.tsx` | `index.html loads main.tsx` |
+| `createRoot finds the root div` | `document.getElementById('root') finds the div; createRoot uses it` |
+| `App.tsx gets mounted` | `main.tsx mounts <App /> into the root div` |
+| Vague script explanation | `dev` specifically runs `vite` |
+
+Main reminder:
 
 ```text
-main.tsx mounts the <App /> component into the root div, and App.tsx returns the UI.
+Use precise wording for startup flow.
+React renders components, not files.
 ```
 
-### Correction 3
+## 9. Portfolio mapping
 
-Less accurate wording:
+Learning project:
 
 ```text
-index.html calls main.tsx
+main.tsx -> App.tsx -> Day01Setup.tsx
 ```
 
-Better wording:
+Portfolio:
 
 ```text
-index.html loads main.tsx.
-```
-
-### Correction 4
-
-Less accurate wording:
-
-```text
-createRoot finds the root div
-```
-
-Better wording:
-
-```text
-document.getElementById('root') finds the root div. createRoot uses that div to create React's root.
-```
-
-## 10. Portfolio mapping
-
-This setup maps directly to the portfolio.
-
-Portfolio flow:
-
-```text
-main.tsx
-  -> App.tsx
-    -> providers/routing/shared layout
-      -> Home.tsx
-        -> Navigation, Hero, Projects, Experience, Skills, About, Contact, Footer
-```
-
-Learning project flow:
-
-```text
-main.tsx
-  -> App.tsx
-    -> Day01Setup.tsx
+main.tsx -> App.tsx -> providers/routing/shared layout -> page components
 ```
 
 Same idea, smaller scale.
 
-## 11. Interview-ready wording
+## 10. Interview-ready wording
 
 Use this:
 
@@ -407,26 +205,17 @@ The app starts from main.tsx. The browser first loads index.html, which contains
 Portfolio version:
 
 ```text
-In my portfolio, main.tsx renders App into the root div. App.tsx then acts as the main app shell, where routing, providers, shared layout, and page-level components are connected.
+In my portfolio, main.tsx renders App into the root div. App.tsx acts as the main app shell where routing, providers, shared layout, and page-level components are connected.
 ```
 
-## 12. What to remember before Day 2
-
-Remember this flow:
+## 11. What to remember before Day 2
 
 ```text
-index.html -> main.tsx -> App.tsx -> component -> browser UI
+index.html gives React a place to mount.
+main.tsx starts React and renders <App />.
+App.tsx is the root component and current switchboard.
+A custom component returns JSX shown in the browser.
+React startup flow is index.html -> main.tsx -> App.tsx -> component -> browser UI.
 ```
 
-Remember these roles:
-
-- `index.html` gives React a place to mount.
-- `main.tsx` starts React and renders `<App />`.
-- `App.tsx` is the root component and current switchboard.
-- `Day01Setup.tsx` is the first custom component created for the learning project.
-
-Next day:
-
-```text
-Day 2 - React mental model, components, JSX
-```
+Next: Day 2 - React mental model, components, JSX.
