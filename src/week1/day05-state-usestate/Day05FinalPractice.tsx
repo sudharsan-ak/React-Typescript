@@ -1,44 +1,21 @@
 // Day 5 - Final Mixed Exercise: State checkpoint
 // Scenario: React learning dashboard
+//
+// This component is a final Day 5 checkpoint for React state with useState.
+// It combines number, boolean, union string, and object state, functional
+// updates, reset behavior, conditional rendering, mode switching, disabled
+// button logic, and immutable object updates in one small learning dashboard.
 
 import { useState } from "react"
 
-// 1. Create a union type called StudyMode
-// It should allow only these values:
-// Reading, Practicing, Reviewing
 type StudyMode = "Reading" | "Practicing" | "Reviewing"
 
-// 2. Create an object type called StudyProfile
-// It should describe:
-// - learner name
-// - current day
-// - main topic
 type StudyProfile = {
   learnerName: string
   currentDay: number
   topic: string
 }
 
-// 3. Create a component called Day05FinalPractice
-
-// 4. Inside the component, create state for:
-// - completed exercises count
-// - whether the summary is visible
-// - current study mode
-// - study profile object
-
-// 5. Render the learner name, current day, main topic,
-// completed exercises count, and current study mode
-
-// 6. Add buttons to:
-// - increase completed exercises
-// - reset completed exercises
-// - switch study mode
-// - toggle summary visibility
-// - update only the main topic inside the profile object
-
-// 7. When summary visibility is true, show:
-// Summary: Day 5 covered number, boolean, string, and object state.
 function Day05FinalPractice() {
   const [completedExercises, setCompletedExercises] = useState(0)
   const [isSummaryVisible, setSummaryVisible] = useState(false)
@@ -87,5 +64,4 @@ function Day05FinalPractice() {
   )
 }
 
-// 8. Export Day05FinalPractice as the default export
 export default Day05FinalPractice
