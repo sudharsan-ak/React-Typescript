@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 5
-Next update: only if Day 6 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 6
+Next update: only if Day 7 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -93,6 +93,72 @@ When updating one object field, create a new object with spread syntax.
 useState does not automatically merge object fields.
 ```
 
+## Event handling rules learned so far
+
+```text
+React event props use camelCase, like onClick, onChange, and onSubmit.
+An event handler is a function that runs when an event happens.
+Pass a handler reference with onClick={handleClick}.
+Do not call a handler during render with onClick={handleClick()} unless that is intentionally returning another function.
+Inline handlers are okay for tiny one-off actions.
+Use named handlers for meaningful logic or cleaner JSX.
+Event handlers often call state setters.
+Use functional updates inside event handlers when the next state depends on the previous state.
+```
+
+## Passing arguments to event handlers
+
+```text
+No custom argument needed -> onClick={handleClick}
+Custom argument needed -> onClick={() => handleClick(value)}
+Custom argument plus event needed -> onClick={(event) => handleClick(value, event)}
+```
+
+Examples:
+
+```tsx
+<button onClick={handleResetPanel}>Reset panel</button>
+```
+
+```tsx
+<button onClick={() => handleSelectSection("Projects")}>
+  Projects
+</button>
+```
+
+```tsx
+<button onClick={(event) => handleSelectSection("Projects", event)}>
+  Projects
+</button>
+```
+
+## Event object rules
+
+```text
+React passes the event object to the function assigned to the event prop.
+If the function assigned to onClick is a named handler, the named handler receives the event.
+If the function assigned to onClick is an arrow wrapper, the arrow wrapper receives the event.
+A named handler behind an arrow wrapper receives the event only if the arrow forwards it.
+React.MouseEvent<HTMLButtonElement> is a TypeScript type, not the runtime event value.
+React.ChangeEvent<HTMLInputElement> is the common type for text input change handlers.
+Use currentTarget when you want the element that owns the handler.
+Use target when you specifically need the actual element that triggered the event.
+```
+
+Useful typing examples:
+
+```tsx
+function handleButtonClick(event: React.MouseEvent<HTMLButtonElement>) {
+  console.log(event.currentTarget.textContent)
+}
+```
+
+```tsx
+function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  setDisplayName(event.currentTarget.value)
+}
+```
+
 ## Day 4 examples to remember
 
 ```tsx
@@ -157,6 +223,47 @@ Prevent a counter from going below zero:
 setCompletedExercises((previousCount) => Math.max(previousCount - 1, 0))
 ```
 
+## Day 6 examples to remember
+
+Named click handler:
+
+```tsx
+function handleNamedClick() {
+  console.log("Named handler clicked")
+}
+
+<button onClick={handleNamedClick}>Named click</button>
+```
+
+Argument-passing handler:
+
+```tsx
+function handleSelectSection(section: PortfolioSection) {
+  setSelectedSection(section)
+}
+
+<button onClick={() => handleSelectSection("Contact")}>
+  Contact
+</button>
+```
+
+Button event object:
+
+```tsx
+function handleLogEventTarget(event: React.MouseEvent<HTMLButtonElement>) {
+  console.log("currentTarget text:", event.currentTarget.textContent)
+  console.log("target:", event.target)
+}
+```
+
+Input change event:
+
+```tsx
+function handleDisplayNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+  setDisplayName(event.currentTarget.value)
+}
+```
+
 ## List rendering reminders
 
 ```text
@@ -181,6 +288,6 @@ Example:
 ## Current status
 
 ```text
-React rules captured through Day 5.
+React rules captured through Day 6.
 Update this file only when new reusable React/TypeScript coding rules are learned.
 ```

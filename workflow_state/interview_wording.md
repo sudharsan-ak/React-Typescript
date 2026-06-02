@@ -72,6 +72,38 @@ Functional update version:
 When the next state depends on the previous state, I use the functional update form. For example, toggling a boolean uses the previous value and returns the opposite value. For object state, I create a new object with spread syntax and update only the field that changed instead of mutating the existing object.
 ```
 
+## Event handling
+
+Short version:
+
+```text
+Event handling in React is how components respond to user actions like clicks, typing, and form submits. I pass a handler function to event props like onClick or onChange. For tiny actions, an inline handler is fine, but for meaningful logic I prefer named handlers because they keep the JSX readable.
+```
+
+State update version:
+
+```text
+When a user action needs to update the UI, the event handler calls a state setter. If the next value depends on the previous value, like a counter or a toggle, I use the functional update form so React updates from the latest state.
+```
+
+Passing arguments version:
+
+```text
+If an event handler does not need a custom value, I pass the handler directly, like onClick={handleClick}. If it needs a value, I wrap it in an arrow function, like onClick={() => handleSelectSection("Projects")}. I avoid calling handlers directly in JSX because that runs during render instead of on the actual event.
+```
+
+Event object version:
+
+```text
+React passes an event object into handlers when I need details about the event. For click handlers, I usually use currentTarget when I want the element the handler is attached to. target is the actual element clicked, which can be different when the button has nested elements inside it.
+```
+
+Portfolio version:
+
+```text
+In my portfolio, the AI assistant button is a click-event example because clicking it toggles open state. The Contact form is a form-event example because input changes update form state, and submit handling prevents the default browser refresh before sending the request.
+```
+
 ## Project cards and array rendering
 
 ```text
@@ -95,12 +127,12 @@ The contact form is a controlled form. The input values live in React state, and
 ## Full portfolio walkthrough answer
 
 ```text
-My portfolio is a React + TypeScript app built around reusable components and clean page composition. App.tsx acts as the shell where routing, providers, shared layout, and floating UI are connected. The home page is composed from focused sections like Hero, Projects, Experience, Skills, About, Contact, and Footer. The strongest React examples are the project rendering flow, the AI assistant state/props flow, and the contact form flow. As I keep improving it, I would focus on stronger client-side validation, accessibility, testing, and performance optimizations.
+My portfolio is a React + TypeScript app built around reusable components and clean page composition. App.tsx acts as the shell where routing, providers, shared layout, and floating UI are connected. The home page is composed from focused sections like Hero, Projects, Experience, Skills, About, Contact, and Footer. The strongest React examples are the project rendering flow, the AI assistant state/props/event flow, and the contact form flow. As I keep improving it, I would focus on stronger client-side validation, accessibility, testing, and performance optimizations.
 ```
 
 ## Current status
 
 ```text
-Interview wording captured through Day 5.
+Interview wording captured through Day 6.
 Update this file only when new useful interview explanations are added.
 ```

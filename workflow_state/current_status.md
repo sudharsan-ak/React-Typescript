@@ -18,7 +18,8 @@ Day 2 - Cleared
 Day 3 - Cleared
 Day 4 - Cleared
 Day 5 - Cleared
-Next: Day 6 - Event handling
+Day 6 - Cleared
+Next: Day 7 - Conditional rendering and list rendering
 ```
 
 ## Detailed status
@@ -29,14 +30,14 @@ Day 2 - React mental model, components, JSX - Cleared
 Day 3 - Props - Cleared
 Day 4 - TypeScript props with type and interface - Cleared
 Day 5 - State with useState - Cleared
-Day 6 - Event handling - Not started
+Day 6 - Event handling - Cleared
 Day 7 - Conditional rendering and list rendering - Not started
-Next: Day 6 - Event handling
+Next: Day 7 - Conditional rendering and list rendering
 ```
 
 ## Current Project Sources structure
 
-Preferred structure after Day 5:
+Preferred structure after Day 6:
 
 ```text
 README.md
@@ -53,9 +54,10 @@ day2_notes.md
 day3_notes.md
 day4_notes.md
 day5_notes.md
+day6_notes.md
 ```
 
-## Files to read before starting Day 6
+## Files to read before starting Day 7
 
 Required:
 
@@ -66,7 +68,7 @@ learning_roadmap.md
 portfolio_mapping.md
 interview_wording.md
 learning_index_part1.md
-day5_notes.md
+day6_notes.md
 ```
 
 Reference only when relevant:
@@ -80,8 +82,8 @@ mistakes_log.md
 
 ```text
 Week 1 - React Foundations
-Completed: Day 1 through Day 5
-Remaining: Day 6 and Day 7
+Completed: Day 1 through Day 6
+Remaining: Day 7
 ```
 
 Current Week 1 notes:
@@ -92,27 +94,29 @@ day2_notes.md
 day3_notes.md
 day4_notes.md
 day5_notes.md
+day6_notes.md
 ```
 
 ## Next day
 
 ```text
-Day 6 - Event handling
+Day 7 - Conditional rendering and list rendering
 ```
 
-Expected Day 6 focus:
+Expected Day 7 focus:
 
 ```text
-what events are
-onClick basics
-inline handlers vs named handlers
-event object basics
-passing arguments to event handlers
-event.currentTarget vs event.target preview
-button interactions
-input/change event preview if useful
-how event handlers update state
-portfolio mapping to AI assistant toggle and Contact form handlers
+conditional rendering mental model
+if/else before return
+ternary rendering
+&& rendering
+show/hide UI from boolean state
+rendering fallback UI
+list rendering with map
+keys and stable identity
+rendering arrays of objects
+conditional rendering inside lists
+portfolio mapping to Projects, Skills, Experience, and conditional UI
 final mixed exercise
 ```
 
@@ -164,5 +168,5 @@ Remove day1_notes.md through day7_notes.md from Project Sources if possible.
 ## Current confidence level
 
 ```text
-Ready for Day 6 - Event handling
+Ready for Day 7 - Conditional rendering and list rendering
 ```

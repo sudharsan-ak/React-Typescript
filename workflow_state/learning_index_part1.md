@@ -10,8 +10,8 @@ https://github.com/Asabeneh/30-Days-Of-React
 ```text
 Part 1 covers Week 1 only.
 Week 1: Day 1 to Day 7
-Current completed through: Day 5
-Next: Day 6 - Event handling
+Current completed through: Day 6
+Next: Day 7 - Conditional rendering and list rendering
 ```
 
 After Day 7 is cleared, update this file one final time and freeze it as the completed Week 1 archive.
@@ -27,7 +27,7 @@ After Day 7 is cleared, update this file one final time and freeze it as the com
 | Day 3 | Props | Cleared | `day3_notes.md` |
 | Day 4 | TypeScript props with `type` and `interface` | Cleared | `day4_notes.md` |
 | Day 5 | State with `useState` | Cleared | `day5_notes.md` |
-| Day 6 | Event handling | Not started | - |
+| Day 6 | Event handling | Cleared | `day6_notes.md` |
 | Day 7 | Conditional rendering and list rendering | Not started | - |
 
 ---
@@ -38,8 +38,8 @@ Status:
 
 ```text
 In progress
-Completed: Day 1 through Day 5
-Remaining: Day 6 and Day 7
+Completed: Day 1 through Day 6
+Remaining: Day 7
 ```
 
 Main Week 1 foundation:
@@ -195,24 +195,57 @@ Do not mutate state directly.
 
 ---
 
-## Day 6 preview
+## Day 6 summary
+
+Covered:
+
+```text
+event mental model
+onClick basics
+inline handlers
+named handler functions
+event handlers updating state
+passing custom arguments to handlers
+event object basics
+currentTarget vs target
+button click event typing
+input/change event preview
+controlled input preview
+resetting multiple state values from one handler
+```
+
+Key reminder:
+
+```text
+React gives the event to the function assigned to the event prop.
+If a custom argument is needed, use an arrow wrapper.
+If the named handler also needs the event, the arrow wrapper must forward it.
+currentTarget is the element with the handler.
+target is the actual element that triggered the event.
+```
+
+---
+
+## Day 7 preview
 
 Next:
 
 ```text
-Day 6 - Event handling
+Day 7 - Conditional rendering and list rendering
 ```
 
 Expected focus:
 
 ```text
-onClick basics
-inline handlers
-named handler functions
-event object basics
-passing arguments to handlers
-how handlers trigger state updates
-portfolio mapping to AI assistant toggle and contact form events
+if/else before return
+ternary rendering
+&& rendering
+show/hide UI
+fallback UI
+map rendering
+keys
+arrays of objects
+portfolio mapping to Projects, Skills, Experience, and conditional UI
 ```
 
 ---
@@ -260,5 +293,5 @@ current_status.md
 ## Current confidence level
 
 ```text
-Ready for Day 6 - Event handling
+Ready for Day 7 - Conditional rendering and list rendering
 ```
