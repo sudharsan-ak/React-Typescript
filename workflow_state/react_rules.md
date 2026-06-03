@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 6
-Next update: only if Day 7 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 7
+Next update: only if Day 8 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -37,6 +37,8 @@ Tags with no children should be self-closing.
 The > in an opening JSX tag closes the opening tag and starts the content.
 Use readable spacing like return (, not return(.
 Use <hr /> instead of <hr></hr>.
+Use ul/li for real lists.
+Do not put p tags directly inside ul; direct children of ul should be li elements.
 ```
 
 ## Props rules learned so far
@@ -56,7 +58,7 @@ You can receive props with the props object style or with destructuring.
 Destructuring is cleaner when a component has several props.
 ```
 
-## TypeScript prop rules learned so far
+## TypeScript prop and data-shape rules learned so far
 
 ```text
 Inline prop typing is okay for tiny examples.
@@ -66,14 +68,14 @@ The parent still passes the actual values.
 Use type for reusable prop aliases and union types.
 Use interface for object-shaped prop contracts when it reads better or a project prefers it.
 For React props, type and interface are both valid.
-Use optional props only when the parent may actually omit the value.
+Use optional props only when the parent/data may actually omit the value.
 Optional props use ?.
 Union props limit values to a known set.
 A union type does not create a default value.
 Default values are assigned in component destructuring or component logic, not in the type/interface.
 Use string[] for arrays of strings.
-Use stable keys when rendering arrays.
-Use ul/li for real lists instead of p tags.
+Use object array types like Project[] or Task[] for list-rendered data.
+Optional object fields need fallback UI or intentional conditional hiding.
 ```
 
 ## State rules learned so far
@@ -157,6 +159,108 @@ function handleButtonClick(event: React.MouseEvent<HTMLButtonElement>) {
 function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
   setDisplayName(event.currentTarget.value)
 }
+```
+
+## Conditional rendering rules
+
+```text
+Conditional rendering means JavaScript conditions decide what JSX appears.
+Use early returns for big UI branches like loading, error, empty, or not selected.
+Handle special cases first and return normal UI last.
+Use fallback UI when the user needs feedback.
+Return null only when showing nothing is intentional.
+Use ternary when you need A or B.
+Use && when you only need to show something if true.
+Avoid deeply nested ternaries; move messy logic to variables, helper functions, or components.
+Conditional className is valid when styling depends on state/data.
+```
+
+Examples:
+
+```tsx
+if (isLoading) {
+  return <p>Loading...</p>
+}
+```
+
+```tsx
+{isComplete ? <p>Complete</p> : <p>Incomplete</p>}
+```
+
+```tsx
+{isFeatured && <p>Featured item</p>}
+```
+
+```tsx
+className={isSelected ? "selected-button" : "normal-button"}
+```
+
+## List rendering rules
+
+```text
+map() turns an array into repeated JSX.
+Each rendered list item needs a key.
+The key helps React track item identity between renders.
+key does not display in the browser.
+You still need to render the visible value inside the element.
+Use stable ids as keys when available.
+key={value} is okay only when the value is unique and stable among siblings.
+Avoid index as key unless the list is static and never reorders, inserts, or deletes.
+Use empty array fallback UI when blank UI would confuse the user.
+Use filter() before map() when rendering only a subset.
+Nested arrays need nested map() calls.
+```
+
+Basic string list:
+
+```tsx
+<ul>
+  {technologies.map((technology) => (
+    <li key={technology}>{technology}</li>
+  ))}
+</ul>
+```
+
+Object list:
+
+```tsx
+{projects.map((project) => (
+  <article key={project.id}>
+    <h3>{project.title}</h3>
+  </article>
+))}
+```
+
+Filter before map:
+
+```tsx
+const featuredProjects = projects.filter((project) => project.isFeatured)
+```
+
+Empty fallback:
+
+```tsx
+{tools.length === 0 ? (
+  <p>No tools added yet.</p>
+) : (
+  <ul>
+    {tools.map((tool) => (
+      <li key={tool}>{tool}</li>
+    ))}
+  </ul>
+)}
+```
+
+Conditional rendering inside mapped cards:
+
+```tsx
+{items.map((item) => (
+  <article key={item.id} className={item.isFeatured ? "featured-card" : "normal-card"}>
+    <h3>{item.title}</h3>
+    {item.isFeatured && <p>Featured item</p>}
+    {item.description ? <p>{item.description}</p> : <p>No description available.</p>}
+  </article>
+))}
 ```
 
 ## Day 4 examples to remember
@@ -264,30 +368,58 @@ function handleDisplayNameChange(event: React.ChangeEvent<HTMLInputElement>) {
 }
 ```
 
-## List rendering reminders
+## Day 7 examples to remember
 
-```text
-map() turns an array into repeated JSX.
-Each rendered list item needs a key.
-The key helps React track list item identity.
-key does not display in the browser.
-key={technology} is okay only if technology values are unique.
-A stable id is better when available.
-```
-
-Example:
+Early fallback:
 
 ```tsx
-<ul>
-  {technologies.map((technology) => (
-    <li key={technology}>{technology}</li>
-  ))}
-</ul>
+if (!selectedSection) {
+  return <p>Please select a section.</p>
+}
+```
+
+Ternary:
+
+```tsx
+{showCompleted ? "Hide completed" : "Show completed"}
+```
+
+Optional UI:
+
+```tsx
+{task.priority === "high" && <p>High priority</p>}
+```
+
+Filtered list:
+
+```tsx
+const filteredTasks = tasks.filter((task) => {
+  if (selectedArea !== "all" && task.area !== selectedArea) {
+    return false
+  }
+
+  if (!showCompleted && task.isComplete) {
+    return false
+  }
+
+  return true
+})
+```
+
+Mapped cards:
+
+```tsx
+{filteredTasks.map((task) => (
+  <article key={task.id} className={task.priority}>
+    <h3>{task.title}</h3>
+    <p>{task.isComplete ? "Complete" : "Incomplete"}</p>
+  </article>
+))}
 ```
 
 ## Current status
 
 ```text
-React rules captured through Day 6.
-Update this file only when new reusable React/TypeScript coding rules are learned.
+React rules captured through Day 7.
+Update this file only when new reusable React/TypeScript rules are learned.
 ```

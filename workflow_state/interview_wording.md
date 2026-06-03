@@ -110,6 +110,12 @@ In my portfolio, the AI assistant button is a click-event example because clicki
 The Projects section follows a data-driven rendering pattern. Project data contains fields like title, description, technologies, highlights, image details, and GitHub URL. The UI maps over the projects array to render repeated project cards, and then maps over nested arrays like technologies and highlights to render badges or detail lines.
 ```
 
+## Conditional rendering and list rendering
+
+```text
+Conditional rendering lets state or data decide what UI appears, such as fallback, optional, loading, or normal UI. List rendering uses .map() to turn arrays into repeated JSX, with keys helping React track item identity. In my portfolio, the Projects section is the strongest example because project data renders into cards, with nested technologies/highlights and optional project details.
+```
+
 ## AI assistant flow
 
 ```text
@@ -133,6 +139,6 @@ My portfolio is a React + TypeScript app built around reusable components and cl
 ## Current status
 
 ```text
-Interview wording captured through Day 6.
+Interview wording captured through Day 7.
 Update this file only when new useful interview explanations are added.
 ```

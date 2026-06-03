@@ -226,7 +226,7 @@ loading state
 success/error handling
 ```
 
-## Day 1 to Day 5 mapping summary
+## Day 1 to Day 7 mapping summary
 
 ```text
 Day 1 -> main.tsx/App.tsx startup flow maps to real portfolio app startup.
@@ -234,11 +234,13 @@ Day 2 -> components/JSX map to portfolio sections and App/Home composition.
 Day 3 -> props map to SmartAIAssistantButton and repeated UI patterns.
 Day 4 -> TypeScript props map to SmartAIAssistantButton Props interface, App theme union type, and Projects array rendering.
 Day 5 -> state maps to App theme state, AI assistant open/toggle state, and Contact form object/loading state.
+Day 6 -> event handling maps to SmartAIAssistantButton click/toggle behavior and Contact form input/submit handlers.
+Day 7 -> conditional and list rendering maps to Projects array rendering, nested technologies/highlights, optional GitHub UI, and state-driven conditional UI.
 ```
 
 ## Current status
 
 ```text
-Mappings captured through Day 5.
+Mappings captured through Day 7.
 Update this file only when new verified repo/live-site mappings are added.
 ```

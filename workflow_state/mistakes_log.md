@@ -5,8 +5,8 @@ Recurring mistakes, prompt mismatches, and reusable gotchas observed during the 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 6
-Next update: only if Day 7 introduces reusable mistakes/gotchas
+Current scope: Day 1 through Day 7
+Next update: only if Day 8 introduces reusable mistakes/gotchas
 ```
 
 Use this file as the dedicated place for mistakes and gotchas. Keep `learning_index_part*.md` focused on historical progress and reminders.
@@ -22,6 +22,7 @@ Use this file as the dedicated place for mistakes and gotchas. Keep `learning_in
 | `return(` spacing | Prefer `return (` for readability |
 | `<hr></hr>` | Prefer self-closing `<hr />` in JSX |
 | Raw GitHub links | Use normal GitHub file pages in user-facing answers, not raw.githubusercontent links |
+| Portfolio mapping format | Filename should be inline code; do not use visible markdown GitHub links when the source chip style is expected |
 | Source order confusion | Declaration order can work, but readable structure matters: types/interfaces, components, main component, export |
 | Render order confusion | The order inside JSX controls browser display order |
 | Type/interface confusion | They define shape only; they do not create actual values |
@@ -29,7 +30,9 @@ Use this file as the dedicated place for mistakes and gotchas. Keep `learning_in
 | Optional prop handling | If a prop is optional, handle missing values with fallback or default destructuring |
 | Loose string props | Use union types when only known values should be allowed |
 | Array rendering structure | Use `ul/li` for real lists, not repeated `p` tags |
-| Key uniqueness | `key={value}` is fine only when values are unique; stable ids are better |
+| Invalid `ul` children | Do not put `<p>` directly inside `<ul>`; use `<li>` inside lists and put fallback text outside the list |
+| Key uniqueness | `key={value}` is fine only when values are unique among siblings; stable ids are better |
+| Index keys | Avoid index keys unless the list is static and never reorders/inserts/deletes |
 | Portfolio guessing | Do not claim exact portfolio implementation unless verified in repo/live site |
 | Giving solutions too early | If the user asks for placement/snippet style, do not provide the completed implementation |
 | Calling handlers immediately | `onClick={handleClick()}` runs during render; use `onClick={handleClick}` unless intentionally returning a function |
@@ -38,6 +41,7 @@ Use this file as the dedicated place for mistakes and gotchas. Keep `learning_in
 | Event type vs event object confusion | `React.MouseEvent<HTMLButtonElement>` is the TypeScript type, not the runtime event object |
 | `currentTarget` vs `target` confusion | `currentTarget` is the handler owner; `target` is the actual clicked element |
 | Overusing inline handlers | Inline handlers are okay for tiny logic, but move meaningful logic to named handlers |
+| Overusing inline styles | In rendering exercises, avoid inline style unless styling is the point |
 
 ## Review categories
 
@@ -78,7 +82,7 @@ Keep comments aligned after refactors.
 Props are read-only.
 Parent means the component that renders the child.
 String props use quotes; number/boolean props use curly braces.
-Long inline prop types should be split across lines or moved into type/interface later.
+Long inline prop types should be split across multiple lines or moved into type/interface later.
 ```
 
 ### Day 4
@@ -90,7 +94,7 @@ Use type for unions.
 Use interface or type for object-shaped props.
 Optional props need fallback/default behavior.
 Default values belong in destructuring/component logic, not the type/interface.
-Use normal GitHub blob links in responses.
+Use normal GitHub blob links in responses when a visible URL is explicitly needed.
 ```
 
 ### Day 5
@@ -118,9 +122,26 @@ Use target only when you need the actual clicked nested element.
 Inline handlers are okay for tiny logic, but named handlers keep meaningful logic readable.
 ```
 
+### Day 7
+
+```text
+If the topic is specifically early returns/null, do not jump ahead to && rendering even though it is valid React.
+Use fallback UI when the user needs feedback; use null only when showing nothing is intentional.
+Use ternary for A/B UI.
+Use && for optional UI.
+Do not put fallback paragraphs inside ul elements.
+When an array is empty, render fallback UI outside the list instead of rendering an empty ul with invalid children.
+key helps React track identity but does not display anything.
+Use stable ids as keys when available.
+Use filter() before map() when rendering a subset.
+Optional object fields should be rendered with fallback text or intentionally hidden.
+Avoid inline styles in final rendering exercises unless styling is the actual focus.
+Keep final mixed exercises compact and scenario-based, not bloated checklists.
+```
+
 ## Current status
 
 ```text
-Mistakes captured through Day 6.
+Mistakes captured through Day 7.
 Update this file only when a mistake is reusable enough to matter later.
 ```

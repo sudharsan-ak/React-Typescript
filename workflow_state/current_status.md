@@ -12,14 +12,15 @@ https://sudharsansrinivasan.com/
 ## Current progress
 
 ```text
-Week 1 - In progress
+Week 1 - Cleared
 Day 1 - Cleared
 Day 2 - Cleared
 Day 3 - Cleared
 Day 4 - Cleared
 Day 5 - Cleared
 Day 6 - Cleared
-Next: Day 7 - Conditional rendering and list rendering
+Day 7 - Cleared
+Next: Day 8 - Component composition and reusable components
 ```
 
 ## Detailed status
@@ -31,13 +32,14 @@ Day 3 - Props - Cleared
 Day 4 - TypeScript props with type and interface - Cleared
 Day 5 - State with useState - Cleared
 Day 6 - Event handling - Cleared
-Day 7 - Conditional rendering and list rendering - Not started
-Next: Day 7 - Conditional rendering and list rendering
+Day 7 - Conditional rendering and list rendering - Cleared
+Week 1 - React Foundations - Cleared
+Next: Day 8 - Component composition and reusable components
 ```
 
 ## Current Project Sources structure
 
-Preferred structure after Day 6:
+Preferred structure after Week 1 consolidation:
 
 ```text
 README.md
@@ -49,15 +51,18 @@ mistakes_log.md
 portfolio_mapping.md
 interview_wording.md
 learning_index_part1.md
-day1_notes.md
-day2_notes.md
-day3_notes.md
-day4_notes.md
-day5_notes.md
-day6_notes.md
+week1_notes.md
 ```
 
-## Files to read before starting Day 7
+Generated for local/history if wanted:
+
+```text
+day7_notes.md
+```
+
+After `week1_notes.md` is uploaded, individual daily notes from Day 1 through Day 7 do not need to stay in Project Sources.
+
+## Files to read before starting Day 8
 
 Required:
 
@@ -68,7 +73,7 @@ learning_roadmap.md
 portfolio_mapping.md
 interview_wording.md
 learning_index_part1.md
-day6_notes.md
+week1_notes.md
 ```
 
 Reference only when relevant:
@@ -81,42 +86,27 @@ mistakes_log.md
 ## Active week status
 
 ```text
-Week 1 - React Foundations
-Completed: Day 1 through Day 6
-Remaining: Day 7
-```
-
-Current Week 1 notes:
-
-```text
-day1_notes.md
-day2_notes.md
-day3_notes.md
-day4_notes.md
-day5_notes.md
-day6_notes.md
+Week 1 - React Foundations - Cleared
+Week 2 - Next
 ```
 
 ## Next day
 
 ```text
-Day 7 - Conditional rendering and list rendering
+Day 8 - Component composition and reusable components
 ```
 
-Expected Day 7 focus:
+Expected Day 8 focus:
 
 ```text
-conditional rendering mental model
-if/else before return
-ternary rendering
-&& rendering
-show/hide UI from boolean state
-rendering fallback UI
-list rendering with map
-keys and stable identity
-rendering arrays of objects
-conditional rendering inside lists
-portfolio mapping to Projects, Skills, Experience, and conditional UI
+component composition mental model
+when to split components
+parent/child composition
+reusable component patterns
+children prop basics if useful
+passing data into reusable components
+avoiding bloated components
+portfolio mapping to Home, Projects, Skills, Experience, and shared UI
 final mixed exercise
 ```
 
@@ -153,20 +143,24 @@ Do not update:
 learning_index.md           # deprecated stub only
 ```
 
-## Pending cleanup after Day 7
+## Cleanup after Week 1 consolidation
 
-After Day 7 is cleared:
+After uploading `week1_notes.md`, remove these from Project Sources if possible:
 
 ```text
-Generate day7_notes.md.
-Generate week1_notes.md.
-Finalize learning_index_part1.md for Week 1.
-Update current_status.md for Day 8 / Week 2.
-Remove day1_notes.md through day7_notes.md from Project Sources if possible.
+day1_notes.md
+day2_notes.md
+day3_notes.md
+day4_notes.md
+day5_notes.md
+day6_notes.md
+day7_notes.md
 ```
+
+Keep `week1_notes.md` as the Week 1 consolidated study file.
 
 ## Current confidence level
 
 ```text
-Ready for Day 7 - Conditional rendering and list rendering
+Ready for Day 8 - Component composition and reusable components
 ```

@@ -10,25 +10,26 @@ https://github.com/Asabeneh/30-Days-Of-React
 ```text
 Part 1 covers Week 1 only.
 Week 1: Day 1 to Day 7
-Current completed through: Day 6
-Next: Day 7 - Conditional rendering and list rendering
+Status: Completed
+Next index: Part 2 / Week 2
+Next day: Day 8 - Component composition and reusable components
 ```
 
-After Day 7 is cleared, update this file one final time and freeze it as the completed Week 1 archive.
+This file is now the finalized Week 1 archive.
 
 ---
 
 ## Completed days
 
-| Day | Topic | Status | Notes file |
+| Day | Topic | Status | Consolidated notes |
 |---|---|---|---|
-| Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Cleared | `day1_notes.md` |
-| Day 2 | React mental model, components, JSX | Cleared | `day2_notes.md` |
-| Day 3 | Props | Cleared | `day3_notes.md` |
-| Day 4 | TypeScript props with `type` and `interface` | Cleared | `day4_notes.md` |
-| Day 5 | State with `useState` | Cleared | `day5_notes.md` |
-| Day 6 | Event handling | Cleared | `day6_notes.md` |
-| Day 7 | Conditional rendering and list rendering | Not started | - |
+| Day 1 | Setup, Vite, React app structure, `main.tsx`, `App.tsx` | Cleared | `week1_notes.md` |
+| Day 2 | React mental model, components, JSX | Cleared | `week1_notes.md` |
+| Day 3 | Props | Cleared | `week1_notes.md` |
+| Day 4 | TypeScript props with `type` and `interface` | Cleared | `week1_notes.md` |
+| Day 5 | State with `useState` | Cleared | `week1_notes.md` |
+| Day 6 | Event handling | Cleared | `week1_notes.md` |
+| Day 7 | Conditional rendering and list rendering | Cleared | `week1_notes.md` |
 
 ---
 
@@ -37,9 +38,7 @@ After Day 7 is cleared, update this file one final time and freeze it as the com
 Status:
 
 ```text
-In progress
-Completed: Day 1 through Day 6
-Remaining: Day 7
+Cleared
 ```
 
 Main Week 1 foundation:
@@ -51,7 +50,7 @@ JSX
 props
 TypeScript prop typing
 state
-events
+event handling
 conditional rendering
 list rendering
 ```
@@ -226,26 +225,65 @@ target is the actual element that triggered the event.
 
 ---
 
-## Day 7 preview
+## Day 7 summary
 
-Next:
-
-```text
-Day 7 - Conditional rendering and list rendering
-```
-
-Expected focus:
+Covered:
 
 ```text
+conditional rendering mental model
 if/else before return
+early returns
+fallback UI
+returning null
 ternary rendering
 && rendering
-show/hide UI
-fallback UI
-map rendering
-keys
+show/hide UI from boolean state
+list rendering with map
+keys and stable identity
+empty array fallback
 arrays of objects
-portfolio mapping to Projects, Skills, Experience, and conditional UI
+nested lists
+filter before map
+conditional rendering inside lists
+optional object fields
+final mixed exercise
+```
+
+Key reminder:
+
+```text
+Use early returns for big branches.
+Use ternary for A/B UI.
+Use && for optional UI.
+Use map() to render arrays.
+Use stable keys when available.
+Use filter() before map() when rendering a subset.
+Handle empty and optional data with fallback UI.
+```
+
+---
+
+## Week 1 portfolio mapping summary
+
+Verified mappings live in `portfolio_mapping.md`.
+
+Main Week 1 mappings:
+
+```text
+App.tsx -> startup/app shell, routing/providers/shared UI, theme state
+SmartAIAssistantButton.tsx -> typed props, optional theme, boolean open state, click toggle
+Projects.tsx -> arrays of objects, repeated project cards, nested technologies/highlights, optional UI
+Contact.tsx -> object form state, loading state, input/change preview, submit handling
+```
+
+---
+
+## Week 1 interview summary
+
+Use this as a compact Week 1 explanation:
+
+```text
+My React portfolio is built from reusable components. The app starts from main.tsx, renders App.tsx, and App connects the main shell, routes, providers, and shared UI. Props pass data from parent to child, TypeScript defines the expected prop and state shapes, useState manages changing UI values, and event handlers update state based on user actions. Conditional rendering decides what UI appears, and map rendering turns arrays of data into repeated UI like project cards, skill badges, and task lists.
 ```
 
 ---
@@ -288,10 +326,28 @@ Current progress:
 current_status.md
 ```
 
+Consolidated Week 1 notes:
+
+```text
+week1_notes.md
+```
+
+---
+
+## Cleanup note
+
+After `week1_notes.md` is uploaded to Project Sources, individual daily notes for Day 1 through Day 7 can be removed from Project Sources.
+
+```text
+day1_notes.md through day7_notes.md -> no longer needed in Project Sources
+week1_notes.md -> keep as consolidated Week 1 notes
+```
+
 ---
 
 ## Current confidence level
 
 ```text
-Ready for Day 7 - Conditional rendering and list rendering
+Week 1 cleared.
+Ready for Day 8 - Component composition and reusable components.
 ```
