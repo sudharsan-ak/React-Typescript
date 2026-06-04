@@ -136,9 +136,30 @@ The contact form is a controlled form. The input values live in React state, and
 My portfolio is a React + TypeScript app built around reusable components and clean page composition. App.tsx acts as the shell where routing, providers, shared layout, and floating UI are connected. The home page is composed from focused sections like Hero, Projects, Experience, Skills, About, Contact, and Footer. The strongest React examples are the project rendering flow, the AI assistant state/props/event flow, and the contact form flow. As I keep improving it, I would focus on stronger client-side validation, accessibility, testing, and performance optimizations.
 ```
 
+
+## Component composition
+
+In my React projects, I use component composition to keep the app readable. A page-level component should mostly organize the major sections instead of holding every detail itself. Section components own focused areas of the UI, and repeated patterns like cards, badges, or list items can become reusable child components that receive data through props.
+
+## Reusable components
+
+When I see the same JSX structure repeated with different values, I usually turn that into a reusable component. The parent owns the data and passes it down through props, while the child component focuses on rendering one item cleanly. This keeps the UI easier to scan and avoids duplicating the same markup in multiple places.
+
+## children and wrapper components
+
+When the same outer layout repeats but the inner content changes, I can use the `children` prop. The wrapper component owns the common structure, like a section title and layout, while the parent passes whatever JSX belongs inside. I would use this for reusable section wrappers, card shells, page containers, or modal layouts when the inside content needs to stay flexible.
+
+## Clean component boundaries
+
+The goal is not to create as many components as possible. The goal is to create clear boundaries. I split a component when a section has a clear responsibility, when repeated UI can become reusable, or when the parent is getting hard to read. I avoid over-splitting tiny pieces because that creates file noise instead of real maintainability.
+
+## Real-world file organization
+
+In a real project, meaningful section components often live in their own files, especially when they have their own data, markup, or behavior. Smaller reusable pieces like cards, badges, wrappers, and shared UI components can also be split when they are reused or make the parent easier to understand. But if something is tiny and only used once, keeping it local is fine.
+
 ## Current status
 
 ```text
-Interview wording captured through Day 7.
+Interview wording captured through Day 8.
 Update this file only when new useful interview explanations are added.
 ```

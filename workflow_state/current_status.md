@@ -20,7 +20,9 @@ Day 4 - Cleared
 Day 5 - Cleared
 Day 6 - Cleared
 Day 7 - Cleared
-Next: Day 8 - Component composition and reusable components
+Week 2 - In progress
+Day 8 - Cleared
+Next: Day 9 - Controlled forms
 ```
 
 ## Detailed status
@@ -34,12 +36,14 @@ Day 5 - State with useState - Cleared
 Day 6 - Event handling - Cleared
 Day 7 - Conditional rendering and list rendering - Cleared
 Week 1 - React Foundations - Cleared
-Next: Day 8 - Component composition and reusable components
+Day 8 - Component composition and reusable components - Cleared
+Week 2 - In progress
+Next: Day 9 - Controlled forms
 ```
 
 ## Current Project Sources structure
 
-Preferred structure after Week 1 consolidation:
+Preferred structure after Day 8:
 
 ```text
 README.md
@@ -51,18 +55,14 @@ mistakes_log.md
 portfolio_mapping.md
 interview_wording.md
 learning_index_part1.md
+learning_index_part2.md
 week1_notes.md
-```
-
-Generated for local/history if wanted:
-
-```text
-day7_notes.md
+day8_notes.md
 ```
 
 After `week1_notes.md` is uploaded, individual daily notes from Day 1 through Day 7 do not need to stay in Project Sources.
 
-## Files to read before starting Day 8
+## Files to read before starting Day 9
 
 Required:
 
@@ -72,8 +72,9 @@ project_rules.md
 learning_roadmap.md
 portfolio_mapping.md
 interview_wording.md
-learning_index_part1.md
+learning_index_part2.md
 week1_notes.md
+day8_notes.md
 ```
 
 Reference only when relevant:
@@ -81,33 +82,67 @@ Reference only when relevant:
 ```text
 react_rules.md
 mistakes_log.md
+learning_index_part1.md
 ```
 
 ## Active week status
 
 ```text
 Week 1 - React Foundations - Cleared
-Week 2 - Next
+Week 2 - In progress
+Day 8 - Cleared
 ```
 
 ## Next day
 
 ```text
-Day 8 - Component composition and reusable components
+Day 9 - Controlled forms
 ```
 
-Expected Day 8 focus:
+Expected Day 9 focus:
+
+```text
+controlled input mental model
+input value from state
+onChange updates state
+text input handling
+textarea handling
+select basics if useful
+checkbox basics if useful
+form state object pattern
+basic form submit
+preventDefault
+portfolio mapping to Contact form where verified
+final mixed exercise
+```
+
+## Day 8 summary
+
+Day 8 covered:
 
 ```text
 component composition mental model
 when to split components
-parent/child composition
-reusable component patterns
-children prop basics if useful
-passing data into reusable components
 avoiding bloated components
-portfolio mapping to Home, Projects, Skills, Experience, and shared UI
+parent/child composition
+reusable components with props
+children prop basics
+reusable wrapper components
+cleanup habits
+real-world file splitting judgment
 final mixed exercise
+```
+
+Final exercise:
+
+```text
+Online course dashboard
+```
+
+Final exercise status:
+
+```text
+Cleared
 ```
 
 ## End-of-day update rule
@@ -143,24 +178,9 @@ Do not update:
 learning_index.md           # deprecated stub only
 ```
 
-## Cleanup after Week 1 consolidation
-
-After uploading `week1_notes.md`, remove these from Project Sources if possible:
-
-```text
-day1_notes.md
-day2_notes.md
-day3_notes.md
-day4_notes.md
-day5_notes.md
-day6_notes.md
-day7_notes.md
-```
-
-Keep `week1_notes.md` as the Week 1 consolidated study file.
-
 ## Current confidence level
 
 ```text
-Ready for Day 8 - Component composition and reusable components
+Day 8 cleared.
+Ready for Day 9 - Controlled forms.
 ```

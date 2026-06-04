@@ -5,8 +5,8 @@ Recurring mistakes, prompt mismatches, and reusable gotchas observed during the 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 7
-Next update: only if Day 8 introduces reusable mistakes/gotchas
+Current scope: Day 1 through Day 8
+Next update: only if Day 9 introduces reusable mistakes/gotchas
 ```
 
 Use this file as the dedicated place for mistakes and gotchas. Keep `learning_index_part*.md` focused on historical progress and reminders.
@@ -139,9 +139,25 @@ Avoid inline styles in final rendering exercises unless styling is the actual fo
 Keep final mixed exercises compact and scenario-based, not bloated checklists.
 ```
 
+
+### Day 8
+
+```text
+Do not confuse a TypeScript props type with the component itself.
+The type describes the props shape; the component renders JSX.
+React does not magically replace repeated sections; you manually choose to use a wrapper component.
+Use children when the wrapper layout is reusable and the inside JSX should stay flexible.
+Do not use children just to look advanced.
+Do not split every tiny JSX piece into its own component or file.
+A parent component should compose meaningful child sections, not become a dumping ground.
+For practice files, heavy comments and old commented code can be a useful learning trail.
+For final exercise files, comments are fine when useful, but avoid messy leftover scaffold.
+For interview wording, avoid one-line code blocks that cause horizontal scrolling; use readable paragraph formatting.
+```
+
 ## Current status
 
 ```text
-Mistakes captured through Day 7.
+Mistakes captured through Day 8.
 Update this file only when a mistake is reusable enough to matter later.
 ```

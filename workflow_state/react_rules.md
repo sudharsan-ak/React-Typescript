@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 7
-Next update: only if Day 8 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 8
+Next update: only if Day 9 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -417,9 +417,105 @@ Mapped cards:
 ))}
 ```
 
+
+## Component composition rules
+
+```text
+Component composition means building larger UI by combining smaller focused components.
+A parent component can act like a table of contents for child components.
+Split components when a section has a clear responsibility.
+Split components when repeated UI has the same structure but different data.
+Do not split components just to make the folder look fancy.
+Avoid both extremes: one giant component and too many tiny vague components.
+A good child component should have a clear name and clear responsibility.
+```
+
+Good split examples:
+
+```text
+Page -> Header, LessonsSection, InstructorSection, ChecklistSection
+LessonsSection -> LessonCard
+Section layout -> DashboardSection
+```
+
+Bad split examples:
+
+```text
+TitleText
+SmallParagraph
+RandomBox
+PartOne
+Thing
+```
+
+## Reusable component rules
+
+```text
+Same structure + different data usually means a reusable component with props.
+The parent owns or chooses the data.
+The reusable child component receives props and renders one focused piece of UI.
+Use map() with reusable components when rendering repeated array data.
+```
+
+Example pattern:
+
+```tsx
+{lessons.map((lesson) => (
+  <LessonCard key={lesson.id} lesson={lesson} />
+))}
+```
+
+## children prop rules
+
+```text
+children means the JSX placed between a component's opening and closing tags.
+Use children when the wrapper/layout is reusable but the inside content changes.
+Use normal named props when the component needs specific values.
+Use ReactNode to type children in TypeScript.
+A TypeScript type describes props; it does not render anything.
+The component function renders the JSX.
+```
+
+Example:
+
+```tsx
+type DashboardSectionProps = {
+  title: string
+  children: ReactNode
+}
+
+function DashboardSection({ title, children }: DashboardSectionProps) {
+  return (
+    <section>
+      <h2>{title}</h2>
+      {children}
+    </section>
+  )
+}
+```
+
+Usage:
+
+```tsx
+<DashboardSection title="Lessons">
+  <LessonCard lesson={lesson} />
+</DashboardSection>
+```
+
+## File splitting rules
+
+```text
+In real projects, meaningful section-level components often live in their own files.
+Reusable cards, wrappers, badges, and shared UI can also be split when they are reused or make the parent easier to read.
+Tiny one-off JSX pieces do not need their own files.
+Practice files may keep comments and old code as a learning trail.
+Final exercise files should be mostly clean, with only useful comments.
+Production files should avoid dead commented-out code.
+```
+
 ## Current status
 
 ```text
-React rules captured through Day 7.
+React rules captured through Day 8.
 Update this file only when new reusable React/TypeScript rules are learned.
 ```
