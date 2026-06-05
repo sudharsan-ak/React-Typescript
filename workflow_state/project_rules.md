@@ -153,6 +153,32 @@ Do not give the completed solution unless the user asks.
 
 For final mixed exercises, do not provide a fully solved line-by-line scaffold. Use task-based prompts with light hints instead. Avoid giving exact type definitions, full state declarations, or complete setter code unless the user asks for help. Final exercises should test recall and problem-solving, not copying.
 
+### Exercise snippet compactness
+
+For topic exercise starter snippets, keep instructions clear but not bloated.
+
+Rules:
+
+```text
+- Do not make every tiny repeated step its own numbered item.
+- Club related repeated tasks together when the pattern is the same.
+- It is okay to show one example or hint.
+- If multiple fields/handlers/inputs follow the same pattern, show the pattern once and tell the user to apply it to the rest.
+- Final mixed exercises should stay compact, fresh, and scenario-based.
+- Final mixed exercises should not repeat the exact same examples from topic practice.
+```
+
+Better repeated-handler prompt style:
+
+```tsx
+// Create change handlers for the three fields.
+// Pattern reminder:
+// - text/select/textarea use event.currentTarget.value
+// - checkbox uses event.currentTarget.checked
+// - object updates should preserve previous fields with spread syntax
+```
+
+
 ## Review rules
 
 Review code strictly but fairly.
@@ -198,6 +224,35 @@ src/week1/day04-typescript-props/
 Split practice into focused files when one daily file becomes bloated.
 
 Do not create one file per tiny exercise unless it improves clarity.
+
+### Daily file organization rule
+
+Use one main file per day as the default daily entry file.
+
+Example:
+
+```text
+src/week2/day09-controlled-forms/Day09ControlledForms.tsx
+```
+
+Rules:
+
+```text
+- The main day file should use the DayXXTopicName.tsx pattern.
+- The main day file can act as the daily switchboard/composer.
+- Smaller topic practice can stay inside the main day file.
+- Bigger topics can be moved into focused files and imported into the main day file.
+- Do not create a new file for every tiny topic unless it improves clarity.
+```
+
+Example split:
+
+```text
+Day09ControlledForms.tsx -> main daily file
+Day09FormElementsAndSubmit.tsx -> bigger Topic 3/4 practice file
+Day09FinalPractice.tsx -> final mixed exercise file
+```
+
 
 ## Old React topic handling
 

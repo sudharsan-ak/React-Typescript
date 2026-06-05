@@ -122,18 +122,36 @@ Conditional rendering lets state or data decide what UI appears, such as fallbac
 App owns the AI assistant open state. It passes the current open value and the setter function into SmartAIAssistantButton. When the user clicks the button, the child calls the setter, React updates the parent state, and the assistant opens or closes based on the new value.
 ```
 
-## Contact form preview wording
-
-Use this later after the forms/API days are practiced in VS Code:
+## Controlled forms
 
 ```text
-The contact form is a controlled form. The input values live in React state, and each change updates the matching state field. On submit, the form prevents the default page refresh, sets loading, sends a POST request to the backend, shows success or error feedback, resets on success, and clears loading in the finally block.
+A controlled form means the form values live in React state. Each field displays the current state value, and onChange updates state as the user types, selects, or checks a box. Text inputs, textareas, and selects use value. Checkboxes use checked.
+```
+
+## Contact form
+
+```text
+My contact form is a controlled React form. The form values live in React state, so each input displays the current state value and updates state through onChange as the user types. I keep related fields like name, email, and message together in one object state, and the change handler updates the matching field.
+
+On submit, the form calls preventDefault so the browser does not refresh the page. Then it uses the current form state to send a POST request, shows success or error feedback, resets the form on success, and clears the loading state after the request finishes.
+```
+
+## Form state object pattern
+
+```text
+For a single independent field, separate state is fine. For a form with related fields, I usually keep the values together in one object. When one field changes, I copy the previous object and update only the changed field, so the other values are preserved.
+```
+
+## Form submit handling
+
+```text
+I attach submit logic to the form with onSubmit instead of only using a button click. The submit handler receives the form event, calls preventDefault, and then uses the current state to submit or display the data. This keeps the form from doing a full browser refresh and still supports normal form behavior like pressing Enter.
 ```
 
 ## Full portfolio walkthrough answer
 
 ```text
-My portfolio is a React + TypeScript app built around reusable components and clean page composition. App.tsx acts as the shell where routing, providers, shared layout, and floating UI are connected. The home page is composed from focused sections like Hero, Projects, Experience, Skills, About, Contact, and Footer. The strongest React examples are the project rendering flow, the AI assistant state/props/event flow, and the contact form flow. As I keep improving it, I would focus on stronger client-side validation, accessibility, testing, and performance optimizations.
+My portfolio is a React + TypeScript app built around reusable components and clean page composition. App.tsx acts as the shell where routing, providers, shared layout, and floating UI are connected. The home page is composed from focused sections like Hero, Projects, Experience, Skills, About, Contact, and Footer. The strongest React examples are the project rendering flow, the AI assistant state/props/event flow, and the controlled contact form flow. As I keep improving it, I would focus on stronger client-side validation, accessibility, testing, and performance optimizations.
 ```
 
 
@@ -160,6 +178,6 @@ In a real project, meaningful section components often live in their own files, 
 ## Current status
 
 ```text
-Interview wording captured through Day 8.
+Interview wording captured through Day 9.
 Update this file only when new useful interview explanations are added.
 ```

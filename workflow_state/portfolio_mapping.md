@@ -221,12 +221,54 @@ state
 object state
 controlled forms
 event handlers
+input change handling
+textarea change handling
+form submit handling
+preventDefault
 fetch/API
 loading state
 success/error handling
 ```
 
-## Day 1 to Day 7 mapping summary
+## Controlled forms mapping
+
+Verified file:
+https://github.com/sudharsan-ak/personal-portfolio/blob/main/client/src/components/Contact.tsx
+
+Verified behavior/pattern:
+
+```text
+Contact.tsx is the verified portfolio mapping for Day 9 controlled forms.
+The form values are grouped in object state.
+The visible field values come from React state.
+The shared handleChange updates the matching form field using the field name and value.
+The textarea is controlled as part of the same form state.
+The form uses handleSubmit to prevent the browser refresh and handle submission.
+The submit flow includes loading, POST request, reset on success, and loading cleanup in finally.
+```
+
+Learning concepts connected:
+
+```text
+controlled input mental model
+object form state
+onChange updates state
+input value from state
+textarea value from state
+form onSubmit
+preventDefault
+submitted/request flow
+loading state later
+API calls later
+```
+
+Note:
+
+```text
+Select and checkbox were practiced on Day 9, but do not claim they exist in Contact.tsx unless verified separately.
+```
+
+## Day 1 to Day 9 mapping summary
 
 ```text
 Day 1 -> main.tsx/App.tsx startup flow maps to real portfolio app startup.
@@ -236,11 +278,13 @@ Day 4 -> TypeScript props map to SmartAIAssistantButton Props interface, App the
 Day 5 -> state maps to App theme state, AI assistant open/toggle state, and Contact form object/loading state.
 Day 6 -> event handling maps to SmartAIAssistantButton click/toggle behavior and Contact form input/submit handlers.
 Day 7 -> conditional and list rendering maps to Projects array rendering, nested technologies/highlights, optional GitHub UI, and state-driven conditional UI.
+Day 8 -> component composition maps to App/Home style page composition and reusable section boundaries.
+Day 9 -> controlled forms map to Contact.tsx form state, input/textarea change handling, submit handling, preventDefault, loading, POST request, reset, and cleanup.
 ```
 
 ## Current status
 
 ```text
-Mappings captured through Day 7.
+Mappings captured through Day 9.
 Update this file only when new verified repo/live-site mappings are added.
 ```

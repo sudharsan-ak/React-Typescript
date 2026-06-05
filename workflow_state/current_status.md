@@ -22,7 +22,8 @@ Day 6 - Cleared
 Day 7 - Cleared
 Week 2 - In progress
 Day 8 - Cleared
-Next: Day 9 - Controlled forms
+Day 9 - Cleared
+Next: Day 10 - Form validation and error messages
 ```
 
 ## Detailed status
@@ -37,13 +38,14 @@ Day 6 - Event handling - Cleared
 Day 7 - Conditional rendering and list rendering - Cleared
 Week 1 - React Foundations - Cleared
 Day 8 - Component composition and reusable components - Cleared
+Day 9 - Controlled forms - Cleared
 Week 2 - In progress
-Next: Day 9 - Controlled forms
+Next: Day 10 - Form validation and error messages
 ```
 
 ## Current Project Sources structure
 
-Preferred structure after Day 8:
+Preferred structure after Day 9:
 
 ```text
 README.md
@@ -58,11 +60,12 @@ learning_index_part1.md
 learning_index_part2.md
 week1_notes.md
 day8_notes.md
+day9_notes.md
 ```
 
 After `week1_notes.md` is uploaded, individual daily notes from Day 1 through Day 7 do not need to stay in Project Sources.
 
-## Files to read before starting Day 9
+## Files to read before starting Day 10
 
 Required:
 
@@ -75,6 +78,7 @@ interview_wording.md
 learning_index_part2.md
 week1_notes.md
 day8_notes.md
+day9_notes.md
 ```
 
 Reference only when relevant:
@@ -91,52 +95,66 @@ learning_index_part1.md
 Week 1 - React Foundations - Cleared
 Week 2 - In progress
 Day 8 - Cleared
+Day 9 - Cleared
 ```
 
 ## Next day
 
 ```text
-Day 9 - Controlled forms
+Day 10 - Form validation and error messages
 ```
 
-Expected Day 9 focus:
+Expected Day 10 focus:
+
+```text
+validation mental model
+required field checks
+basic string validation
+email validation basics
+showing error messages
+field-level errors
+form-level errors
+conditional error rendering
+blocking submit when invalid
+clearing/updating errors as user edits
+portfolio mapping to Contact form where verified
+final mixed exercise
+```
+
+## Day 9 summary
+
+Day 9 covered:
 
 ```text
 controlled input mental model
 input value from state
 onChange updates state
 text input handling
+object form state
+updating one object field with spread syntax
+capturing event values before functional state updates
 textarea handling
-select basics if useful
-checkbox basics if useful
-form state object pattern
+select dropdown handling
+checkbox checked handling
 basic form submit
 preventDefault
-portfolio mapping to Contact form where verified
+submitted snapshot state
+portfolio mapping to Contact.tsx
 final mixed exercise
 ```
 
-## Day 8 summary
-
-Day 8 covered:
+Practice files:
 
 ```text
-component composition mental model
-when to split components
-avoiding bloated components
-parent/child composition
-reusable components with props
-children prop basics
-reusable wrapper components
-cleanup habits
-real-world file splitting judgment
-final mixed exercise
+Day09ControlledForms.tsx
+Day09FormElementsAndSubmit.tsx
+Day09FinalPractice.tsx
 ```
 
 Final exercise:
 
 ```text
-Online course dashboard
+Course feedback form
 ```
 
 Final exercise status:
@@ -181,6 +199,6 @@ learning_index.md           # deprecated stub only
 ## Current confidence level
 
 ```text
-Day 8 cleared.
-Ready for Day 9 - Controlled forms.
+Day 9 cleared.
+Ready for Day 10 - Form validation and error messages.
 ```

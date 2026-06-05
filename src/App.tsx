@@ -6,6 +6,7 @@ import Day05StateUseState from './Week 1/day05-state-usestate/Day05StateUseState
 import Day06EventHandling from './Week 1/day06-event-handling/Day06EventHandling'
 import Day07ConditionalListRendering from './Week 1/day07-conditional-list-rendering/Day07ConditionalListRendering'
 import Day08Composition from './Week 2/day08-composition/Day08Composition'
+import Day09ControlledForms from './Week 2/day09-controlled-forms/Day09ControlledForms'
 
 function App() {
   return(
@@ -25,6 +26,8 @@ function App() {
       <Day07ConditionalListRendering />
       <hr />
       <Day08Composition />
+      <hr />
+      <Day09ControlledForms />
       <hr />
     </main>
   )

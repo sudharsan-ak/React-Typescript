@@ -5,8 +5,8 @@ Recurring mistakes, prompt mismatches, and reusable gotchas observed during the 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 8
-Next update: only if Day 9 introduces reusable mistakes/gotchas
+Current scope: Day 1 through Day 9
+Next update: only if Day 10 introduces reusable mistakes/gotchas
 ```
 
 Use this file as the dedicated place for mistakes and gotchas. Keep `learning_index_part*.md` focused on historical progress and reminders.
@@ -42,6 +42,11 @@ Use this file as the dedicated place for mistakes and gotchas. Keep `learning_in
 | `currentTarget` vs `target` confusion | `currentTarget` is the handler owner; `target` is the actual clicked element |
 | Overusing inline handlers | Inline handlers are okay for tiny logic, but move meaningful logic to named handlers |
 | Overusing inline styles | In rendering exercises, avoid inline style unless styling is the point |
+| Controlled input with no onChange | If an input has value from state, it needs onChange to update that state |
+| Checkbox value confusion | Checkboxes should use checked and event.currentTarget.checked, not value |
+| Object form state overwrite | Updating one object field without spreading the previous object wipes out other fields |
+| Event value inside updater | Read event values before functional state updater callbacks; do not use event.currentTarget.value inside the updater |
+| Form submit refresh | If the page refreshes on submit, preventDefault is missing or not wired to form onSubmit |
 
 ## Review categories
 
@@ -155,9 +160,27 @@ For final exercise files, comments are fine when useful, but avoid messy leftove
 For interview wording, avoid one-line code blocks that cause horizontal scrolling; use readable paragraph formatting.
 ```
 
+
+### Day 9
+
+```text
+Controlled text inputs need both value and onChange.
+Single-value state can be replaced directly with the setter.
+Object form state must preserve previous fields with spread syntax before updating one field.
+Do not read event.currentTarget.value inside a functional state updater callback; capture the value first.
+Textarea and select use value with event.currentTarget.value.
+Checkbox uses checked with event.currentTarget.checked.
+Use onSubmit on the form, not just onClick on the submit button.
+Call event.preventDefault() inside submit handlers to stop browser refresh.
+Labels should use htmlFor with matching id on the field.
+Final exercise files should be cleaner; remove long leftover prompt blocks after the component.
+For exercise snippets, show repeated patterns once and ask the user to apply the same pattern, instead of repeating the same hint for every field.
+Use a main daily file like Day09ControlledForms.tsx, and split bigger topics into focused files imported by the main day file.
+```
+
 ## Current status
 
 ```text
-Mistakes captured through Day 8.
+Mistakes captured through Day 9.
 Update this file only when a mistake is reusable enough to matter later.
 ```

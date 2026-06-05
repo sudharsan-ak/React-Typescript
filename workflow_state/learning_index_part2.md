@@ -11,8 +11,8 @@ https://github.com/Asabeneh/30-Days-Of-React
 Part 2 covers Week 2.
 Week 2: Day 8 to Day 14
 Status: In progress
-Current: Day 8 cleared
-Next: Day 9 - Controlled forms
+Current: Day 9 cleared
+Next: Day 10 - Form validation and error messages
 ```
 
 ---
@@ -22,8 +22,8 @@ Next: Day 9 - Controlled forms
 | Day | Topic | Status | Notes |
 |---|---|---|---|
 | Day 8 | Component composition and reusable components | Cleared | `day8_notes.md` |
-| Day 9 | Controlled forms | Next | Pending |
-| Day 10 | Form validation and error messages | Pending | Pending |
+| Day 9 | Controlled forms | Cleared | `day9_notes.md` |
+| Day 10 | Form validation and error messages | Next | Pending |
 | Day 11 | `useEffect` basics | Pending | Pending |
 | Day 12 | Browser APIs with React: `localStorage`, `document`, `window` | Pending | Pending |
 | Day 13 | Fetch/API calls | Pending | Pending |
@@ -69,31 +69,10 @@ Reusable card component -> same structure, different props
 Wrapper component -> same outer layout, flexible children
 ```
 
-Important distinctions:
-
-```text
-A TypeScript type describes props; it does not render JSX.
-A component renders JSX.
-children is the JSX placed between opening and closing component tags.
-React does not automatically replace sections; you manually choose to use wrapper components.
-```
-
 Final mixed exercise:
 
 ```text
 Online course dashboard
-```
-
-Final exercise practiced:
-
-```text
-Day08FinalPractice as parent composer
-CourseHeader as focused section
-LessonsSection as data-owning section
-LessonCard as reusable props-based card
-DashboardSection as children-based wrapper
-map() rendering repeated lesson cards
-conditional rendering for optional status
 ```
 
 Final exercise status:
@@ -104,11 +83,101 @@ Cleared
 
 ---
 
-## Day 8 interview reminder
+## Day 9 summary
 
-In my React projects, I use component composition to keep the app readable. A page-level component should mostly organize the major sections instead of holding every detail itself. Section components own focused areas of the UI, and repeated patterns like cards or list items can become reusable child components that receive data through props.
+Status:
 
-When the same outer layout repeats but the inner content changes, I can use the `children` prop. The wrapper component owns the common structure, while the parent passes whatever JSX belongs inside. The goal is to keep components focused without overengineering tiny pieces into unnecessary files.
+```text
+Cleared
+```
+
+Main topic:
+
+```text
+Controlled forms
+```
+
+Covered:
+
+```text
+controlled input mental model
+input value from state
+onChange updates state
+single text input state
+object form state
+updating one object field with spread syntax
+textarea controlled with value
+select controlled with value
+checkbox controlled with checked
+form submit with onSubmit
+preventDefault
+submitted snapshot state
+portfolio mapping to Contact.tsx
+final mixed exercise
+```
+
+Key mental model:
+
+```text
+state owns form value
+form element displays state
+onChange reads new value
+setter updates state
+React re-renders
+```
+
+Important distinctions:
+
+```text
+Text input, textarea, and select use value.
+Checkbox uses checked.
+Single value state can be replaced directly.
+Object state should preserve previous fields with spread syntax.
+Read event values before using them inside functional state updaters.
+Attach submit handling to the form with onSubmit.
+Use preventDefault to stop browser refresh.
+```
+
+Practice files:
+
+```text
+Day09ControlledForms.tsx
+Day09FormElementsAndSubmit.tsx
+Day09FinalPractice.tsx
+```
+
+Final mixed exercise:
+
+```text
+Course feedback form
+```
+
+Final exercise practiced:
+
+```text
+object form state
+text input
+select dropdown
+textarea
+checkbox
+submit handler
+preventDefault
+submitted/empty conditional UI
+```
+
+Final exercise status:
+
+```text
+Cleared
+```
+
+---
+
+## Day 9 interview reminder
+
+My contact form is a controlled React form. The form values live in React state, so each input displays the current state value and updates state through `onChange` as the user types. I keep related fields together in one object state, and the change handler updates the matching field.
+
+On submit, the form calls `preventDefault` so the browser does not refresh the page. Then it uses the current form state to send the request, shows success or error feedback, resets the form on success, and clears loading after the request finishes.
 
 ---
 
@@ -116,5 +185,6 @@ When the same outer layout repeats but the inner content changes, I can use the 
 
 ```text
 Day 8 cleared.
-Ready for Day 9 - Controlled forms.
+Day 9 cleared.
+Ready for Day 10 - Form validation and error messages.
 ```

@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 8
-Next update: only if Day 9 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 9
+Next update: only if Day 10 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -513,9 +513,133 @@ Final exercise files should be mostly clean, with only useful comments.
 Production files should avoid dead commented-out code.
 ```
 
+## Controlled form rules
+
+```text
+A controlled form field gets its displayed value from React state.
+For text input, textarea, and select, control the field with value.
+For checkbox, control the field with checked.
+Every controlled field needs an onChange handler that updates the backing state.
+Use React.ChangeEvent<HTMLInputElement> for text inputs and checkboxes.
+Use React.ChangeEvent<HTMLTextAreaElement> for textarea.
+Use React.ChangeEvent<HTMLSelectElement> for select.
+Read input, textarea, and select text with event.currentTarget.value.
+Read checkbox state with event.currentTarget.checked.
+Use htmlFor on labels and matching id on the form field.
+```
+
+Basic text input:
+
+```tsx
+const [studentName, setStudentName] = useState("")
+
+function handleStudentNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+  setStudentName(event.currentTarget.value)
+}
+
+<input
+  type="text"
+  value={studentName}
+  onChange={handleStudentNameChange}
+/>
+```
+
+Textarea:
+
+```tsx
+function handleNotesChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  setNotes(event.currentTarget.value)
+}
+
+<textarea value={notes} onChange={handleNotesChange} />
+```
+
+Select:
+
+```tsx
+function handleDifficultyChange(event: React.ChangeEvent<HTMLSelectElement>) {
+  setDifficulty(event.currentTarget.value)
+}
+
+<select value={difficulty} onChange={handleDifficultyChange}>
+  <option value="beginner">Beginner</option>
+  <option value="intermediate">Intermediate</option>
+  <option value="advanced">Advanced</option>
+</select>
+```
+
+Checkbox:
+
+```tsx
+function handleFollowUpChange(event: React.ChangeEvent<HTMLInputElement>) {
+  setWantsFollowUp(event.currentTarget.checked)
+}
+
+<input
+  type="checkbox"
+  checked={wantsFollowUp}
+  onChange={handleFollowUpChange}
+/>
+```
+
+## Object form state rules
+
+```text
+Separate state is fine for independent fields.
+Object state is cleaner when multiple fields belong to one submitted/reset/validated form.
+useState replaces the whole object; it does not merge object fields automatically.
+When updating one object field, spread the previous object first.
+Read event values immediately before using them inside a functional state updater.
+```
+
+Good object update pattern:
+
+```tsx
+function handleTargetRoleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const value = event.currentTarget.value
+
+  setJobPreferenceForm((previousForm) => ({
+    ...previousForm,
+    targetRole: value,
+  }))
+}
+```
+
+Avoid reading the event inside the updater callback:
+
+```tsx
+setJobPreferenceForm((previousForm) => ({
+  ...previousForm,
+  targetRole: event.currentTarget.value,
+}))
+```
+
+## Form submit rules
+
+```text
+Use onSubmit on the form for submit behavior.
+Type submit handlers as React.FormEvent<HTMLFormElement>.
+Call event.preventDefault() to stop browser refresh/navigation.
+Use button type="submit" for the submit button.
+Submitted state can store a snapshot of the form at submit time.
+```
+
+Example:
+
+```tsx
+function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault()
+  setSubmittedFeedback(feedbackForm)
+}
+
+<form onSubmit={handleSubmit}>
+  <button type="submit">Submit</button>
+</form>
+```
+
 ## Current status
 
 ```text
-React rules captured through Day 8.
+React rules captured through Day 9.
 Update this file only when new reusable React/TypeScript rules are learned.
 ```
