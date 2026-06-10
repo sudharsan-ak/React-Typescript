@@ -5,8 +5,8 @@ Recurring mistakes, prompt mismatches, and reusable gotchas observed during the 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 9
-Next update: only if Day 10 introduces reusable mistakes/gotchas
+Current scope: Day 1 through Day 10
+Next update: only if Day 11 introduces reusable mistakes/gotchas
 ```
 
 Use this file as the dedicated place for mistakes and gotchas. Keep `learning_index_part*.md` focused on historical progress and reminders.
@@ -47,6 +47,12 @@ Use this file as the dedicated place for mistakes and gotchas. Keep `learning_in
 | Object form state overwrite | Updating one object field without spreading the previous object wipes out other fields |
 | Event value inside updater | Read event values before functional state updater callbacks; do not use event.currentTarget.value inside the updater |
 | Form submit refresh | If the page refreshes on submit, preventDefault is missing or not wired to form onSubmit |
+| Stale success message after invalid submit | Clear old submitted/success state before validating a new submit |
+| Spaces-only validation | Use `trim()` before required/length checks |
+| Required error overwritten | Use `else if` so required errors are not replaced by format/length errors |
+| One validation message limitation | Use field-level errors when multiple fields can be invalid at once |
+| Field error clearing | Editing one field should clear only that field's error, not every error |
+| Form-level error cleanup | Clear the form-level error when the user edits any field or submits valid data |
 
 ## Review categories
 
@@ -178,9 +184,26 @@ For exercise snippets, show repeated patterns once and ask the user to apply the
 Use a main daily file like Day09ControlledForms.tsx, and split bigger topics into focused files imported by the main day file.
 ```
 
+
+### Day 10
+
+```text
+Use trim() before required text validation so spaces-only input fails.
+Clear stale submitted/success state before validating a new submit.
+Use else-if when required checks should take priority over format or length checks.
+A single validationMessage is okay for early practice, but field-level errors need an errors object.
+Build nextErrors first, then setErrors(nextErrors), then block submit if any error exists.
+Do not set errors after returning from the submit handler.
+Use a form-level error for the whole blocked submit, not as a replacement for field-level errors.
+When editing a field, clear only that field's error and preserve other errors with spread syntax.
+Clear formError when the user edits any field.
+Final exercise files should be cleaned after solving; remove leftover scaffold/TODO comments.
+If an uploaded file looks old, verify the user saved/uploaded the exact open VS Code file before grading.
+```
+
 ## Current status
 
 ```text
-Mistakes captured through Day 9.
+Mistakes captured through Day 10.
 Update this file only when a mistake is reusable enough to matter later.
 ```

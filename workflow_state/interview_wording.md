@@ -148,6 +148,31 @@ For a single independent field, separate state is fine. For a form with related 
 I attach submit logic to the form with onSubmit instead of only using a button click. The submit handler receives the form event, calls preventDefault, and then uses the current state to submit or display the data. This keeps the form from doing a full browser refresh and still supports normal form behavior like pressing Enter.
 ```
 
+
+## Form validation
+
+```text
+Form validation is the layer that checks the current form values before the submit flow continues. I usually trim text values first so spaces-only input does not pass required checks. Then I check basic rules like minimum length or whether an email includes the expected characters.
+```
+
+## Field-level and form-level errors
+
+```text
+For a better form experience, I would store errors per field instead of using only one general message. Field-level errors tell the user exactly what to fix beside each field, while a form-level error explains that the whole submit was blocked until those issues are fixed.
+```
+
+## Clearing validation errors while editing
+
+```text
+After an invalid submit, I would clear a field's error when the user starts editing that field. I would also clear the general form-level error because the user is actively fixing the form. The important part is to clear only the edited field's error and preserve the other field errors until those fields are fixed too.
+```
+
+## Contact form validation improvement
+
+```text
+My contact form already follows the controlled form pattern with state, onChange, and onSubmit. A strong improvement would be adding client-side validation before the request is sent. That means checking required fields, basic email shape, and message length, then showing field-level and form-level errors before calling the API.
+```
+
 ## Full portfolio walkthrough answer
 
 ```text
@@ -178,6 +203,6 @@ In a real project, meaningful section components often live in their own files, 
 ## Current status
 
 ```text
-Interview wording captured through Day 9.
+Interview wording captured through Day 10.
 Update this file only when new useful interview explanations are added.
 ```

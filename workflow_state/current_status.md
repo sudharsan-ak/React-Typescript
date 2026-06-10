@@ -23,7 +23,8 @@ Day 7 - Cleared
 Week 2 - In progress
 Day 8 - Cleared
 Day 9 - Cleared
-Next: Day 10 - Form validation and error messages
+Day 10 - Cleared
+Next: Day 11 - useEffect basics
 ```
 
 ## Detailed status
@@ -39,13 +40,14 @@ Day 7 - Conditional rendering and list rendering - Cleared
 Week 1 - React Foundations - Cleared
 Day 8 - Component composition and reusable components - Cleared
 Day 9 - Controlled forms - Cleared
+Day 10 - Form validation and error messages - Cleared
 Week 2 - In progress
-Next: Day 10 - Form validation and error messages
+Next: Day 11 - useEffect basics
 ```
 
 ## Current Project Sources structure
 
-Preferred structure after Day 9:
+Preferred structure after Day 10:
 
 ```text
 README.md
@@ -61,11 +63,12 @@ learning_index_part2.md
 week1_notes.md
 day8_notes.md
 day9_notes.md
+day10_notes.md
 ```
 
 After `week1_notes.md` is uploaded, individual daily notes from Day 1 through Day 7 do not need to stay in Project Sources.
 
-## Files to read before starting Day 10
+## Files to read before starting Day 11
 
 Required:
 
@@ -79,6 +82,7 @@ learning_index_part2.md
 week1_notes.md
 day8_notes.md
 day9_notes.md
+day10_notes.md
 ```
 
 Reference only when relevant:
@@ -96,65 +100,61 @@ Week 1 - React Foundations - Cleared
 Week 2 - In progress
 Day 8 - Cleared
 Day 9 - Cleared
+Day 10 - Cleared
 ```
 
 ## Next day
 
 ```text
-Day 10 - Form validation and error messages
+Day 11 - useEffect basics
 ```
 
-Expected Day 10 focus:
+Expected Day 11 focus:
 
 ```text
-validation mental model
-required field checks
-basic string validation
-email validation basics
-showing error messages
-field-level errors
-form-level errors
-conditional error rendering
-blocking submit when invalid
-clearing/updating errors as user edits
-portfolio mapping to Contact form where verified
+useEffect mental model
+side effects vs render logic
+running an effect after render
+empty dependency array
+dependency array basics
+using state with effects
+cleanup awareness
+common beginner mistakes
+portfolio mapping where verified
 final mixed exercise
 ```
 
-## Day 9 summary
+## Day 10 summary
 
-Day 9 covered:
+Day 10 covered:
 
 ```text
-controlled input mental model
-input value from state
-onChange updates state
-text input handling
-object form state
-updating one object field with spread syntax
-capturing event values before functional state updates
-textarea handling
-select dropdown handling
-checkbox checked handling
-basic form submit
-preventDefault
-submitted snapshot state
-portfolio mapping to Contact.tsx
+validation mental model
+required field checks with trim()
+basic string validation
+simple email validation
+showing error messages
+field-level errors with an errors object
+form-level errors
+conditional error rendering
+blocking invalid submit
+clearing only the edited field's error
+clearing form-level error while editing
+portfolio mapping to Contact.tsx as a validation improvement layer
 final mixed exercise
 ```
 
 Practice files:
 
 ```text
-Day09ControlledForms.tsx
-Day09FormElementsAndSubmit.tsx
-Day09FinalPractice.tsx
+Day10FormValidation.tsx
+Day10FinalPractice.tsx
 ```
 
 Final exercise:
 
 ```text
-Course feedback form
+Mentor session signup form
 ```
 
 Final exercise status:
@@ -199,6 +199,6 @@ learning_index.md           # deprecated stub only
 ## Current confidence level
 
 ```text
-Day 9 cleared.
-Ready for Day 10 - Form validation and error messages.
+Day 10 cleared.
+Ready for Day 11 - useEffect basics.
 ```

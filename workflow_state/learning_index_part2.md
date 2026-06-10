@@ -11,8 +11,8 @@ https://github.com/Asabeneh/30-Days-Of-React
 Part 2 covers Week 2.
 Week 2: Day 8 to Day 14
 Status: In progress
-Current: Day 9 cleared
-Next: Day 10 - Form validation and error messages
+Current: Day 10 cleared
+Next: Day 11 - useEffect basics
 ```
 
 ---
@@ -23,8 +23,8 @@ Next: Day 10 - Form validation and error messages
 |---|---|---|---|
 | Day 8 | Component composition and reusable components | Cleared | `day8_notes.md` |
 | Day 9 | Controlled forms | Cleared | `day9_notes.md` |
-| Day 10 | Form validation and error messages | Next | Pending |
-| Day 11 | `useEffect` basics | Pending | Pending |
+| Day 10 | Form validation and error messages | Cleared | `day10_notes.md` |
+| Day 11 | `useEffect` basics | Next | Pending |
 | Day 12 | Browser APIs with React: `localStorage`, `document`, `window` | Pending | Pending |
 | Day 13 | Fetch/API calls | Pending | Pending |
 | Day 14 | Loading, error, empty, and success states with API data | Pending | Pending |
@@ -105,7 +105,6 @@ input value from state
 onChange updates state
 single text input state
 object form state
-updating one object field with spread syntax
 textarea controlled with value
 select controlled with value
 checkbox controlled with checked
@@ -131,38 +130,15 @@ Important distinctions:
 ```text
 Text input, textarea, and select use value.
 Checkbox uses checked.
-Single value state can be replaced directly.
 Object state should preserve previous fields with spread syntax.
 Read event values before using them inside functional state updaters.
 Attach submit handling to the form with onSubmit.
-Use preventDefault to stop browser refresh.
-```
-
-Practice files:
-
-```text
-Day09ControlledForms.tsx
-Day09FormElementsAndSubmit.tsx
-Day09FinalPractice.tsx
 ```
 
 Final mixed exercise:
 
 ```text
 Course feedback form
-```
-
-Final exercise practiced:
-
-```text
-object form state
-text input
-select dropdown
-textarea
-checkbox
-submit handler
-preventDefault
-submitted/empty conditional UI
 ```
 
 Final exercise status:
@@ -173,11 +149,96 @@ Cleared
 
 ---
 
-## Day 9 interview reminder
+## Day 10 summary
 
-My contact form is a controlled React form. The form values live in React state, so each input displays the current state value and updates state through `onChange` as the user types. I keep related fields together in one object state, and the change handler updates the matching field.
+Status:
 
-On submit, the form calls `preventDefault` so the browser does not refresh the page. Then it uses the current form state to send the request, shows success or error feedback, resets the form on success, and clears loading after the request finishes.
+```text
+Cleared
+```
+
+Main topic:
+
+```text
+Form validation and error messages
+```
+
+Covered:
+
+```text
+validation mental model
+required field checks
+trim() for spaces-only values
+basic string validation
+simple email validation
+field-level errors
+form-level errors
+conditional error rendering
+blocking invalid submit
+clearing edited field errors
+portfolio mapping to Contact.tsx as a validation improvement layer
+final mixed exercise
+```
+
+Key mental model:
+
+```text
+submit form
+-> preventDefault
+-> validate values
+-> set errors if invalid
+-> stop submit if invalid
+-> continue only when valid
+```
+
+Important distinctions:
+
+```text
+Field-level errors explain the exact field problem.
+Form-level errors explain why the whole submit was blocked.
+Use else-if so required errors are not overwritten by format or length errors.
+Clear only the edited field's error while preserving other field errors.
+Clear the form-level error when the user edits any field.
+```
+
+Practice files:
+
+```text
+Day10FormValidation.tsx
+Day10FinalPractice.tsx
+```
+
+Final mixed exercise:
+
+```text
+Mentor session signup form
+```
+
+Final exercise practiced:
+
+```text
+object form state
+input/select/textarea control
+field-level errors
+form-level error
+blocking invalid submit
+clearing edited field errors
+success message after valid submit
+```
+
+Final exercise status:
+
+```text
+Cleared
+```
+
+---
+
+## Day 10 interview reminder
+
+My contact form is a controlled React form. The field values live in state, and each field updates that state through `onChange`. On submit, I prevent the default browser refresh and validate the current values before allowing the request to continue.
+
+For validation, I would use field-level errors to show the exact issue beside each field, and a form-level error when submission is blocked. As the user edits a field, I would clear that field's error and clear the general form error so the UI responds immediately while they fix the form.
 
 ---
 
@@ -186,5 +247,6 @@ On submit, the form calls `preventDefault` so the browser does not refresh the p
 ```text
 Day 8 cleared.
 Day 9 cleared.
-Ready for Day 10 - Form validation and error messages.
+Day 10 cleared.
+Ready for Day 11 - useEffect basics.
 ```

@@ -7,8 +7,8 @@ Keep this focused on coding, syntax, and component rules. Workflow rules belong 
 ## Scope
 
 ```text
-Current scope: Day 1 through Day 9
-Next update: only if Day 10 adds reusable React/TypeScript rules
+Current scope: Day 1 through Day 10
+Next update: only if Day 11 adds reusable React/TypeScript rules
 ```
 
 ## Global React rules learned so far
@@ -637,9 +637,119 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 </form>
 ```
 
+## Form validation rules
+
+```text
+Validation checks whether form values are good enough before submit continues.
+Client-side validation usually runs inside the submit handler before request/submission logic.
+Call event.preventDefault() first, then validate the current state values.
+Use trim() before checking required text fields so spaces-only input does not pass.
+Clear stale success state at the start of submit when a later invalid submit should hide old success UI.
+Use else-if when format or length checks should not overwrite required-field errors.
+```
+
+Required check:
+
+```tsx
+const trimmedName = form.name.trim()
+
+if (trimmedName === "") {
+  nextErrors.name = "Name is required."
+}
+```
+
+Required check plus format check:
+
+```tsx
+if (trimmedEmail === "") {
+  nextErrors.email = "Email is required."
+} else if (!trimmedEmail.includes("@")) {
+  nextErrors.email = "Email must include @."
+}
+```
+
+## Field-level error rules
+
+```text
+A single validationMessage can show only one error at a time.
+Use an errors object when each field needs its own error message.
+The errors object often mirrors the form state shape.
+Build a nextErrors object during submit, then call setErrors(nextErrors).
+Render each field error next to the matching field with conditional rendering.
+Do not mutate the errors state object directly.
+```
+
+Example:
+
+```tsx
+const [errors, setErrors] = useState({
+  name: "",
+  email: "",
+  message: "",
+})
+
+const nextErrors = {
+  name: "",
+  email: "",
+  message: "",
+}
+
+setErrors(nextErrors)
+```
+
+Conditional error rendering:
+
+```tsx
+{errors.email && <p>{errors.email}</p>}
+```
+
+## Form-level error and blocking-submit rules
+
+```text
+Field-level errors explain exact field problems.
+Form-level errors explain why the whole submit was blocked.
+If any error exists, set the form-level error and return from the submit handler.
+The return is what blocks the valid submit path from running.
+Clear form-level error after a valid submit.
+```
+
+Example:
+
+```tsx
+if (nextErrors.name || nextErrors.email || nextErrors.message) {
+  setFormError("Please fix the highlighted fields before submitting.")
+  return
+}
+
+setFormError("")
+setSubmittedName(trimmedName)
+```
+
+## Clearing errors while editing rules
+
+```text
+A good beginner pattern is validate on submit, then clear errors while editing.
+When a field changes, update that field's form value.
+Then clear only that field's error.
+Also clear the form-level error because the user is actively fixing the form.
+Preserve other field errors with spread syntax.
+Do not clear all field errors when editing one field unless that is intentionally the UX.
+```
+
+Example:
+
+```tsx
+setErrors((previousErrors) => ({
+  ...previousErrors,
+  email: "",
+}))
+
+setFormError("")
+```
+
 ## Current status
 
 ```text
-React rules captured through Day 9.
+React rules captured through Day 10.
 Update this file only when new reusable React/TypeScript rules are learned.
 ```
